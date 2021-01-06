@@ -41,15 +41,7 @@ class Form extends Component {
                   <input type="date" name="DateTo" value={this.state.DateTo}  onChange={this.handleChange}/>
                  </label>
                 </div>
-                <label>
-                  Select format :
-                  <select name="format" value={this.state.format} onChange={this.handleChange}>
-                    <option value="">-</option>
-                     <option  value="json">JSON</option>
-                     <option value="csv">CSV</option>
-            
-                   </select>
-                </label>
+                
               </form>
          </div>
          
