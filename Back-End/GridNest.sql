@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS GridNest; #when you run it for the first time this needs to be in comments
 CREATE DATABASE GridNest;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'GridNest';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'softeng2020';
 flush privileges;
 USE GridNest;
 SHOW VARIABLES LIKE "secure_file_priv";
