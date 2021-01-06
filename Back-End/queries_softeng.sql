@@ -10,8 +10,8 @@ WHERE p.PointID  = "1-1-178-817" AND s.connectionTime >= "20181009" AND s.doneCh
 SELECT s.SessionID,s.connectionTime as StartedOn,s.doneCharginTime as FinishedOn,s.Protocol ,s.KwhDelivered as EnergyDelivered , s.Payment , v.type as VehicleType
 FROM sessions s
 JOIN vehicles v  on v.VehicleID = s.VehicleID
-WHERE s.PointID  = "1-1-178-817" AND s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016"
-ORDER BY s.doneCharginTime,s.connectionTime;
+WHERE s.PointID  = "1-1-178-817" AND s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016" 
+ORDER BY s.doneCharginTime,s.connectionTime ;
 
 
 
@@ -122,3 +122,15 @@ JOIN stations st on s.StationID = st.StationID
 WHERE s.VehicleID  = 5 AND s.connectionTime >= "2018-10-09 13:25:35" AND s.doneCharginTime <= "2019-10-16 18:13:09") as d
 on c.VehicleID = d.VehicleID
 ORDER BY d.StartedOn,d.FinishedOn;
+
+########################################## SessionsPerProvider ############################################
+
+SELECT e.EPID as ProviderID,e.Name as ProviderName 
+FROM energyproviders e
+WHERE e.EPID = 1;
+
+SELECT s.StationID,s.SessionID,s.VehicleID,s.connectionTime as StartedOn,s.doneCharginTime as FinishedOn,s.KwhDelivered as EnergyDelivered , st.CostPerKwh , ROUND(s.KwhDelivered * st.CostPerKwh,2) as TotalCost 
+FROM sessions s 
+JOIN stations st on s.StationID = st.StationID
+JOIN energyproviders e on e.EPID = st.EnergyProvidersID
+WHERE e.EPID = 1 and s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016";
