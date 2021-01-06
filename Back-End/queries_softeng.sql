@@ -124,7 +124,7 @@ on c.VehicleID = d.VehicleID
 ORDER BY d.StartedOn,d.FinishedOn;
 
 ########################################## SessionsPerProvider ############################################
-
+############################################### JSON ###############################################
 SELECT e.EPID as ProviderID,e.Name as ProviderName 
 FROM energyproviders e
 WHERE e.EPID = 1;
@@ -133,4 +133,20 @@ SELECT s.StationID,s.SessionID,s.VehicleID,s.connectionTime as StartedOn,s.doneC
 FROM sessions s 
 JOIN stations st on s.StationID = st.StationID
 JOIN energyproviders e on e.EPID = st.EnergyProvidersID
-WHERE e.EPID = 1 and s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016";
+WHERE e.EPID = 1 and s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016"
+ORDER BY StartedOn,FinishedOn;
+
+##############################################   CSV   ######################################
+SELECT a.ProviderID , a.ProviderName , b.StationID,b.SessionID,b.VehicleID,b.StartedOn,b.FinishedOn,b.EnergyDelivered , b.CostPerKwh , b.TotalCost 
+FROM
+(SELECT e.EPID as ProviderID,e.Name as ProviderName 
+FROM energyproviders e
+WHERE e.EPID = 1 ) as a 
+JOIN
+(SELECT e.EPID,s.StationID,s.SessionID,s.VehicleID,s.connectionTime as StartedOn,s.doneCharginTime as FinishedOn,s.KwhDelivered as EnergyDelivered , st.CostPerKwh , ROUND(s.KwhDelivered * st.CostPerKwh,2) as TotalCost 
+FROM sessions s 
+JOIN stations st on s.StationID = st.StationID
+JOIN energyproviders e on e.EPID = st.EnergyProvidersID
+WHERE e.EPID = 1 and s.connectionTime >= "20181009" AND s.doneCharginTime <= "20181016") as b
+on b.EPID = a.ProviderID
+ORDER BY b.StartedOn,b.FinishedOn;
