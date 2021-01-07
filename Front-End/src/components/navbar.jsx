@@ -22,6 +22,8 @@ const NavBar = () => {
         <div className ="dropdown-menu" aria-labelledby="navbarDropdown">
           <Link className ="dropdown-item" to="/evcharge/api/SessionsPerPoint">SessionsPerPoint</Link>
           <Link className ="dropdown-item" to="/evcharge/api/SessionsPerStation">SessionsPerStation</Link>
+          <Link className ="dropdown-item" to="/evcharge/api/SessionsPerEV">SessionsPerEV</Link>
+          <Link className ="dropdown-item" to="/evcharge/api/SessionsPerProvider">SessionsPerProvider</Link>
           </div>
       </li>
         
