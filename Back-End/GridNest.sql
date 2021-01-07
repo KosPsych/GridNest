@@ -21,10 +21,6 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
 
-/*
-SELECT *
-FROM EnergyProviders; 
-*/
 
 CREATE TABLE Vehicles (
 	brand	varchar(100) NOT NULL,
@@ -41,10 +37,6 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
 
-/*
-SELECT *
-FROM Vehicles;
-*/
 
 CREATE TABLE Stations (
 StationID	varchar(100) NOT NULL,
@@ -63,11 +55,6 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
 
-/*
-SELECT *
-FROM Stations;
-*/
-
 CREATE TABLE Points (
 	PointID		varchar(100) NOT NULL,
 	StationID	varchar(100) NOT NULL,
@@ -82,10 +69,6 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
 
-/*
-SELECT *
-FROM Points;
-*/
 
 CREATE TABLE Users (
 	Username varchar(100) NOT NULL,
@@ -96,20 +79,13 @@ CREATE TABLE Users (
     email varchar(100) ,
     PRIMARY KEY(Username)
 );
-/*
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Users1.csv'
+
+LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Users.csv'
 INTO TABLE Users
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
-*/
-SELECT *
-FROM Users;
 
-/*
-SELECT Username, Password FROM Users
-WHERE Username = "kris" AND Password = "kHvsznmsZE\r";
-*/
 
 CREATE TABLE Sessions (
 SessionID	varchar(100) NOT NULL,
@@ -126,7 +102,7 @@ Payment varchar(10) NOT NULL,
 PRIMARY KEY(SessionID),
 FOREIGN KEY(StationID) REFERENCES Stations(StationID),
 FOREIGN KEY(PointID) REFERENCES Points(PointID),
-#FOREIGN KEY(Username) REFERENCES Users(Username),
+FOREIGN KEY(Username) REFERENCES Users(Username),
 FOREIGN KEY(VehicleID) REFERENCES Vehicles(VehicleID)
 );
 
@@ -135,8 +111,3 @@ INTO TABLE Sessions
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS; 
-
-/*
-SELECT *
-FROM Sessions;
-*/
