@@ -27,16 +27,13 @@ async function authorization(req, res, next){
             res.status(402).send('Username or Password are Incorrect')
           }
           else {
-              var hashed_pass = ""
-              hashed_pass = hashed_pass.concat("'", result[0]['hashpassword'], "'")
-
               if(username == 'admin' && password == 'petrol4ever') {
                 const {hasspass, ...userWithoutHashpassword} = result[0]
                 req.user = userWithoutHashpassword
                 next()
               }
 
-              bcrypt.compare(Password, hashed_pass, function(err, res) {
+              bcrypt.compare(password, result[0]['Password'], function(err, res) {
                 if(err) throw 'Cant compare';
                 else if(!res) {
                   req.user=null
