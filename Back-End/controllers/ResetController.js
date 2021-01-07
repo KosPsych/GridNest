@@ -1,8 +1,14 @@
 const db = require('../db')
+const bcrypt = require('bcrypt');
 
 function resetsessions(req, res) {
-  let reset_query = 'DELETE FROM Sessions; INSERT INTO users (Username, Password, isAdmin) VALUES ("admin", "petrol4ever", "1")';
-  db.query(reset_query, (err, result) => {
+  var username = 'admin'
+  var password = 'petrol4ever'
+  var isAdmin = '1'
+  password = bcrypt.hashSync(password, 10);
+
+  let reset_query = 'DELETE FROM Sessions; INSERT INTO users (Username, Password, isAdmin) VALUES (?, ?, ?)';
+  db.query(reset_query, [username, password, isAdmin],(err, result) => {
     if(err) res.json({ "status": "failed" })
     else res.json({ "status": "OK" })
   })
