@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 
 class Form extends Component {
     state = { 
-       stationID : "",
+       ID : "",
        DateFrom : "",
-       DateTo : "",
-       format:"json"
+       DateTo : ""
+       
      }
 
 
@@ -25,8 +25,8 @@ class Form extends Component {
              <form onSubmit={this.handleSubmit}>
                 <div>
                  <label>
-                  Station ID:
-                  <input type="text" name ="stationID" value={this.state.StationID} maxLength="4" onChange={this.handleChange}/>
+                  {this.props.CID}:
+                  <input type="text" name ={"ID"} value={this.state.ID}  onChange={this.handleChange}/>
                  </label>
                 </div>
                 <div>
@@ -46,7 +46,7 @@ class Form extends Component {
          </div>
          
          <div>
-         <Link to={"/evcharge/api/SessionsPerStation/"+this.state.stationID+"/"+this.state.DateFrom.replace(/-/ig, '')+"/"+this.state.DateTo.replace(/-/ig, '')}>Submit Link</Link>
+         <Link to={"/evcharge/api/"+this.props.SessionType+"/"+this.state.ID+"/"+this.state.DateFrom.replace(/-/ig, '')+"/"+this.state.DateTo.replace(/-/ig, '')}>Submit Link</Link>
          </div>
 
          </React.Fragment>
