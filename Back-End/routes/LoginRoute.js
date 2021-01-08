@@ -9,17 +9,8 @@ app.post('/evcharge/api/login', authorization, Login)
 
 async function authorization(req, res, next){
 
-      var username = req.body.username
-      var password = req.body.password
-
-      var Username = ""
-      var Password = ""
-
-      Username = Username.concat("'", username, "'")
-      Password = Password.concat("'", password, "'")
-
-      name = "SELECT * FROM Users\n"+
-      `WHERE Username = ${Username};`
+      const name = "SELECT * FROM Users\n"+
+      `WHERE Username = '${req.body.username}';`
 
       db.query(name,(err, result) => {
           if(err) throw 'query failed';
@@ -27,7 +18,7 @@ async function authorization(req, res, next){
             res.status(402).send('Username or Password are Incorrect')
           }
           else {
-              bcrypt.compare(password, result[0]['Password'], function(err, res) {
+              bcrypt.compare( req.body.password, result[0]['Password'], function(err, res) {
                 if(err) throw 'Cant compare';
                 else if(!res) {
                   req.user=null
