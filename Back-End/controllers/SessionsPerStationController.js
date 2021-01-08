@@ -1,30 +1,6 @@
 const db = require('../db')
 
-function arrayToCSV (data) {
-    csv = data.map(row => Object.values(row));
-    csv.unshift(Object.keys(data[0]));
-    return csv.join('\n');
-  }
-function convert_datetime(date_ob){
-    // current date
-    // adjust 0 before single digit date
-    let date = ("0" + date_ob.getDate()).slice(-2);
-    // current month
-    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-    // current year
-    let year = date_ob.getFullYear();
-    // current hours
-    let hours = ("0" + date_ob.getHours()).slice(-2);
-    // current minutes
-    let minutes = ("0" + date_ob.getMinutes()).slice(-2);
-    // current seconds
-    let seconds = ("0" + date_ob.getSeconds()).slice(-2);
-    return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
-}
-function convert_date(date){
-return date.substr(0,4)+"-"+date.substr(4,2)+"-"+date.substr(6,2);
-    
-}
+const {arrayToCSV , convert_datetime , convert_date} = require('./HelpfulFunctions')
 
 function getSessionsPerStation(req, res) {
 
@@ -36,19 +12,19 @@ function getSessionsPerStation(req, res) {
         "(SELECT st.StationID,st.Operator,Count(*) as NumberOfChargingSessions ,SUM(s.KwhDelivered) as TotalEnergyDelivered\n"+ 
         "FROM sessions s\n"+
         "JOIN stations st on st.StationID = s.StationID\n"+
-        `WHERE '${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}' ) as a\n`+
+        `WHERE st.stationID  ='${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}' ) as a\n`+
         "JOIN \n"+
         "(SELECT a.StationID,Count(*) as NumberOfActivePoints\n"+
         "FROM \n"+
         "(SELECT DISTINCT st.StationID,s.PointID\n"+
         "FROM sessions s\n"+
         "JOIN stations st on st.StationID = s.StationID\n"+
-        `WHERE '${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}'  ) as a ) as b \n`+
+        `WHERE st.stationID  ='${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}'  ) as a ) as b \n`+
         "on a.StationID = b.StationID ) as c\n"+
         "JOIN\n"+
         "(SELECT s.stationID,s.PointID , Count(*) as PointSessions, SUM(s.KwhDelivered) as EnergyDelivered \n"+
         "FROM sessions s\n"+
-        `WHERE '${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}' \n`+
+        `WHERE s.stationID  ='${req.params.stationID}' AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}' \n`+
         "GROUP BY s.PointID ) as d\n"+
         "on c.stationID = d.stationID;"
         
