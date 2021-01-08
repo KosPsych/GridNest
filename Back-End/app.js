@@ -17,5 +17,7 @@ require('./routes/HealthCheckRoute')(app)
 require('./routes/SessionsPerPointRoute')(app)
 require('./routes/SessionsPerStationRoute')(app)
 require('./routes/SessionsPerEVRoute')(app)
+require('./routes/SessionsPerProviderRoute')(app)
+
 
 module.exports = app
