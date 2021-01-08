@@ -51,8 +51,12 @@ function getSessionsPerEV(req, res) {
         "ORDER BY d.StartedOn,d.FinishedOn;\n"
     
         db.query(getSessions, (err, rows) => {
+
             if(err) res.status(400).send(err.message) 
+
+            else if (rows=='') res.status(402).send("No Data")
             else {
+                //if (rows)
                 rows.forEach( row => row["PeriodFrom"] = convert_date(req.params.yyyymmdd_from));
                 rows.forEach( row => row["PeriodTo"] = convert_date(req.params.yyyymmdd_til));
                 rows.forEach( row => row["StartedOn"] =convert_datetime(row["StartedOn"]));
@@ -89,9 +93,12 @@ function getSessionsPerEV(req, res) {
         "JOIN stations st on s.StationID = st.StationID\n"+
         `WHERE s.VehicleID  = ${req.params.vehicleID} AND s.connectionTime >= '${req.params.yyyymmdd_from}' AND s.doneCharginTime <= '${req.params.yyyymmdd_til}'\n`+
         "ORDER BY s.doneCharginTime,s.connectionTime;"
+        
 
-        db.query(getSessions,[1,2], (err, rows) => {
+        db.query(getSessions,[1,2,3], (err, rows) => {
+
             if(err) res.status(400).send(err.message) 
+            else if (rows[0].length < 1 || rows[1].length < 1) res.status(402).send("No Data")
             else {
                     // Add request parameters and convert date and datetime to desired endpoint values
                     rows[0][0]["PeriodFrom"] =convert_date(req.params.yyyymmdd_from);

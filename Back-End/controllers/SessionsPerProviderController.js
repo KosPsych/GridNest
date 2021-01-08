@@ -42,7 +42,10 @@ function getSessionsPerProvider(req, res) {
         "ORDER BY b.StartedOn,b.FinishedOn";
 
         db.query(getSessions, (err, rows) => {
+        
             if(err) res.status(400).send(err.message) 
+            else if (rows=='') res.status(402).send("No Data")
+
             else {
 
                 rows.forEach( row => row["StartedOn"] =convert_datetime(row["StartedOn"]));
@@ -70,6 +73,9 @@ function getSessionsPerProvider(req, res) {
         
         db.query(getSessions,[1,2], (err, rows) => {
             if(err) res.status(400).send(err.message) 
+
+            else if (rows[0].length < 1 || rows[1].length < 1) res.status(402).send("No Data")
+
             else {
                 // Add request parameters and convert date and datetime to desired endpoint values
                // res.send(rows);

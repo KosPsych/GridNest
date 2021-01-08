@@ -43,6 +43,9 @@ function getSessionsPerPoint(req, res) {
 
         db.query(getSessions, (err, rows) => {
             if(err) res.status(400).send(err.message) 
+
+            else if (rows=='') res.status(402).send("No Data")
+
             else {
                 rows.forEach( row => row["PeriodFrom"] = convert_date(req.params.yyyymmdd_from));
                 rows.forEach( row => row["PeriodTo"] = convert_date(req.params.yyyymmdd_til));
@@ -78,6 +81,8 @@ function getSessionsPerPoint(req, res) {
         //getSessions = "SELECT * from Sessions";
         db.query(getSessions,[1,2], (err, rows) => {
             if(err) res.status(400).send(err.message) 
+
+            else if (rows[0].length < 1 || rows[1].length < 1) res.status(402).send("No Data")
             else {
                 // Add request parameters and convert date and datetime to desired endpoint values
                 rows[0][0]["PeriodFrom"] =convert_date(req.params.yyyymmdd_from);
