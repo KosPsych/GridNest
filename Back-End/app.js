@@ -12,6 +12,7 @@ app.use(cors({origin: 'http://localhost:3000'}));
 require('./routes/LoginRoute')(app)
 require('./routes/LogoutRoute')(app)
 require('./routes/AdminAddAlterUserRoute')(app)
+require('./routes/AdminReadUserRoute')(app)
 require('./routes/ResetRoute')(app)
 require('./routes/HealthCheckRoute')(app)
 require('./routes/SessionsPerPointRoute')(app)
