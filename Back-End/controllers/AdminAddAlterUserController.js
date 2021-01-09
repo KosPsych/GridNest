@@ -12,7 +12,8 @@ function AdminAddAlterUser(req,res){
       const email = req.body.email
       var isAdmin = req.body.isAdmin
 
-      if(isAdmin == 2 && username != 'admin') isAdmin = 1 //if admin made mistake make user simply admin not default admin
+      if(isAdmin == 2 || username != 'admin') isAdmin = 1 //if admin made mistake, make user simply admin not default admin
+      if(username == 'admin') isAdmin  =  2 //if username = 'admin' then we insert default admin
 
       bcrypt.hash(password, 10, (err, hashpass) => {
         if(err) {
