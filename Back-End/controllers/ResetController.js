@@ -4,14 +4,28 @@ const bcrypt = require('bcrypt');
 function resetsessions(req, res) {
   var username = 'admin'
   var password = 'petrol4ever'
-  var isAdmin = '1'
+  var isAdmin = '2'
   password = bcrypt.hashSync(password, 10);
 
-  let reset_query = 'DELETE FROM Sessions; INSERT INTO users (Username, Password, isAdmin) VALUES (?, ?, ?)';
-  db.query(reset_query, [username, password, isAdmin],(err, result) => {
-    if(err) res.json({ "status": "failed" })
-    else res.json({ "status": "OK" })
+  let check_def_admin_existence =  "SELECT * FROM Users WHERE isAdmin='2'";
+  db.query(check_def_admin_existence, (error,  result1) => {
+    if(error) throw 'query failed';
+    else if(result1=='') {
+      let reset_query = 'DELETE FROM Sessions; INSERT INTO users (Username, Password, isAdmin) VALUES (?, ?, ?)';
+      db.query(reset_query, [username, password, isAdmin],(err, result) => {
+        if(err) res.json({ "status": "failed" })
+        else res.json({ "status": "OK" })
+      })
+    }
+    else  {
+      reset_def_admin = 'UPDATE Users SET Username = ?, Password = ? WHERE isAdmin = ?'
+      db.query(reset_def_admin, [username,password, isAdmin], (error1, result2)  =>  {
+        if(error1) res.json({ "status": "failed" })
+        else res.json({ "status": "OK" })
+      })
+    }
   })
+
 }
 
 module.exports = resetsessions;
