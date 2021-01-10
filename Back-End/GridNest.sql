@@ -4,7 +4,6 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'softeng2
 flush privileges;
 USE GridNest;
 set global sql_mode='';
-SET SQL_SAFE_UPDATES = 0;
  
 CREATE TABLE tokens  (
 	accessToken text
