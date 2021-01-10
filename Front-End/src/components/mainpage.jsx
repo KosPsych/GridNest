@@ -1,7 +1,12 @@
 import React , { Component }from 'react';
 
   class MainPage extends Component {
-      state = { }
+      state = { 
+         
+      }
+
+      
+
       render() { 
           return ( <h1>This is the main page</h1>);
       }

@@ -22,7 +22,7 @@ class Form extends Component {
           <React.Fragment>
            <h1>Insert Parameters</h1>
            <div>
-             <form onSubmit={this.handleSubmit}>
+             <form>
                 <div>
                  <label>
                   {this.props.CID}:

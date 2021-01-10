@@ -10,7 +10,7 @@ import Table from 'react-bootstrap/Table'
 
        async componentDidMount(){
            
-        const {data: Sessions}= await axios.get("http://localhost:8765/evcharge/api/SessionsPerProvider/"+this.props.match.params.ProviderID+"/"+this.props.match.params.datefrom+"/"+this.props.match.params.dateto);
+        const {data: Sessions}= await axios.get("https://localhost:8765/evcharge/api/SessionsPerProvider/"+this.props.match.params.ProviderID+"/"+this.props.match.params.datefrom+"/"+this.props.match.params.dateto);
         this.state.second_render=true
         this.setState({Sessions})
     
