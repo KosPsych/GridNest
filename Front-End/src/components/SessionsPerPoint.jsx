@@ -11,8 +11,14 @@ class SessionsPerPoint extends Component {
 
 
       async componentDidMount(){
-           
-        const {data: Sessions}= await axios.get("https://localhost:8765/evcharge/api/SessionsPerPoint/"+this.props.match.params.PointID+"/"+this.props.match.params.datefrom+"/"+this.props.match.params.dateto);
+        let config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'x-observatory-auth': localStorage.getItem("token")
+          }
+        }    
+        const {data: Sessions}= await axios.get("https://localhost:8765/evcharge/api/SessionsPerPoint/"+this.props.match.params.PointID+"/"
+        +this.props.match.params.datefrom+"/"+this.props.match.params.dateto,config);
         this.state.second_render=true
         this.setState({Sessions})
     
