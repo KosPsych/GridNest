@@ -12,7 +12,16 @@ const NavBar = ({ user }) => {
         <li className ="nav-item ">
           <NavLink className ="nav-link" to="/evcharge/api">Home <span className ="sr-only">(current)</span></NavLink>
         </li>
-        
+        {user && (user.isAdmin!==0) && <li className ="nav-item dropdown">     
+        <Link className ="nav-link dropdown-toggle" to="/evcharge/api" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin Actions
+        </Link>
+          <div className ="dropdown-menu" aria-labelledby="navbarDropdown">
+          <Link className ="dropdown-item" to="/evcharge/api/admin/usermod">User modification</Link>
+          <Link className ="dropdown-item" to="/evcharge/api/SessionsPerStation">Get User</Link>
+          <Link className ="dropdown-item" to="/evcharge/api/SessionsPerEV">Sessions update</Link>
+          </div>
+      </li> }
 
 
         {user && <li className ="nav-item dropdown">     
