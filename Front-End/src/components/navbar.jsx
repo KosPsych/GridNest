@@ -18,7 +18,7 @@ const NavBar = ({ user }) => {
         </Link>
           <div className ="dropdown-menu" aria-labelledby="navbarDropdown">
           <Link className ="dropdown-item" to="/evcharge/api/admin/usermod">User modification</Link>
-          <Link className ="dropdown-item" to="/evcharge/api/SessionsPerStation">Get User</Link>
+          <Link className ="dropdown-item" to="/evcharge/api/admin/users">Get User</Link>
           <Link className ="dropdown-item" to="/evcharge/api/SessionsPerEV">Sessions update</Link>
           </div>
       </li> }

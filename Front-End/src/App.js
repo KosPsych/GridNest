@@ -13,8 +13,10 @@ import SessionsPerPoint from "./components/SessionsPerPoint";
 import SessionsPerEV from "./components/SessionsPerEV";
 import SessionsPerProvider from "./components/SessionsPerProvider";
 import Usermodform from "./components/Forms/AdminUsermodForm";
+import GetUserForm from "./components/Forms/AdminGetUserForm";
 import Form from "./components/Form";
 import UserMod from "./components/Admin/usermod";
+import GetUser from "./components/Admin/users";
 import jwtDecode from 'jwt-decode';
 
 class App extends Component {
@@ -56,6 +58,8 @@ class App extends Component {
                 <Route path="/evcharge/api/admin/resetsessions" component={Resetsessions}></Route>
                 <Route path="/evcharge/api/admin/usermod/:username/:password" component={UserMod}></Route>
                 <Route path="/evcharge/api/admin/usermod" component={Usermodform}></Route>
+                <Route path="/evcharge/api/admin/users/:username" component={GetUser}></Route>
+                <Route path="/evcharge/api/admin/users" component={GetUserForm}></Route>
                 <Route path="/evcharge/api/login" component={Login}></Route>
                 <Route path="/evcharge/api/logout" component={Logout}></Route>
                 <Route path="/evcharge/api/NotFound" component={NotFound}></Route>
