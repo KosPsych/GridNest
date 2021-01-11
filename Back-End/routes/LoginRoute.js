@@ -18,8 +18,8 @@ async function authorization(req, res, next){
             res.status(402).send('Username or Password are Incorrect')
           }
           else {
-              bcrypt.compare( req.body.password, result[0]['Password'], function(err, res) {
-                if(err) throw 'Cant compare';
+              bcrypt.compare(req.body.password, result[0]['Password'], function(error, res) {
+                if(error) throw 'Cant compare passwords';
                 else if(!res) {
                   req.user=null
                   next()
