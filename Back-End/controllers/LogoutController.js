@@ -1,4 +1,5 @@
 const db = require('../db')
+var fs = require('fs')
 
 function logout(req, res) {
 	const authHeader = req.headers['x-observatory-auth']
@@ -7,12 +8,27 @@ function logout(req, res) {
 	if(!user_logout_token)
 		return res.status(401).send('Missing Logout Token')
 	else{
-		let querry = 'DELETE FROM tokens WHERE accessToken='.concat("'", user_logout_token, "'");
-		db.query(querry, (err, result) => {
-			if(err) throw "Can't  delete this token from db";
-			else
-			res.sendStatus(200)
-		})
+		var dir = './Tokens'
+
+	  if (!fs.existsSync(dir)) return res.status(401).send('Not Authorized');
+
+	  var file = 'softeng20bAPI'
+
+	  var path = dir + '/' +  file
+
+		const data = fs.readFileSync(path, {encoding:'utf8', flag:'r'})
+
+		if(data != user_logout_token) {
+			return res.status(401).send('Not Authorized')
+		}
+
+		try {
+  		fs.writeFileSync(path, '')
+				} catch(err) {
+  			console.error(err)
+				}
+
+		res.sendStatus(200)
 	}
 }
 
