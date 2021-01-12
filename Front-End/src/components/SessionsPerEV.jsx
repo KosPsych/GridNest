@@ -42,7 +42,7 @@ class SessionsPerEV extends Component {
              <li>VehicleID : {this.props.match.params.VehicleID}</li> 
              <li>RequestTimestamp : {this.state.Sessions.RequestTimestamp }</li>
              <li>PeriodFrom : {this.state.Sessions.PeriodFrom}</li>
-             <li>PeriodTo : {this.state.Sessions.PeriodTo}</li>
+             <li>PeriodTo : {this.state.Sessions.PeriodΤο}</li>
              <li>TotalEnergyConsumed : {this.state.Sessions.TotalEnergyConsumed}</li>
              <li>NumberOfVisitedPoints : {this.state.Sessions.NumberOfVisitedPoints}</li>
              
