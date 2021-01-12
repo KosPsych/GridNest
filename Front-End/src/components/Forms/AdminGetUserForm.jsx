@@ -8,7 +8,6 @@ class GetUserForm extends Component {
 
      handleSubmit =()=>{
         this.props.history.push('/evcharge/api/admin/users/'+this.state.username);
-
      }
 
      handleChange = event =>{

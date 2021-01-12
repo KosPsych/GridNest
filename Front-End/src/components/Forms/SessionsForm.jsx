@@ -1,7 +1,7 @@
 import React , { Component }from 'react';
 import {Link} from 'react-router-dom';
 
-class Form extends Component {
+class SessionsForm extends Component {
     state = { 
        ID : "",
        DateFrom : "",
@@ -54,4 +54,4 @@ class Form extends Component {
     }
 }
  
-export default Form;
+export default SessionsForm;
