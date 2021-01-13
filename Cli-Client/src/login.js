@@ -51,7 +51,7 @@ module.exports = function(object){
         axios.post(baseUrl, qs.stringify(requestBody), config )
         .then(res => {
                 console.log(chalk.green('User successfully logged in'));
-                console.log("Copy the the following token (apikey) to use in authentication for your next requests :");
+                console.log("Copy the following token (apikey) to use in authentication for your next requests :");
                 console.log(res.data.user_access_token);
             })
         .catch(err => {

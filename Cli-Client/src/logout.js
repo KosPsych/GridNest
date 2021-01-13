@@ -8,7 +8,7 @@ module.exports = function(object){
     
     //Check for parameters
     
-    if( checkParams('Logout', object.apikey) ){
+    if( checkParams('logout', object.apikey) ){
         console.log(chalk.red('Error! Please insert your unique apikey to Logout'));
     }
 
@@ -16,9 +16,9 @@ module.exports = function(object){
     else{
 
         //Create url
-        let baseUrl = createURL('/Logout');
-        //const baseUrl = 'http://localhost:8765/evcharge/api/logout'
-
+        
+        const baseUrl = 'https://localhost:8765/evcharge/api/logout'
+        
         // add apikey to headers 
         const config = {
             headers: {

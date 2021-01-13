@@ -1,22 +1,15 @@
-<<<<<<< HEAD
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
 //node --no-warnings for no warnings
 const program = require('commander');
 const chalk = require('chalk');
 const healthcheck= require('./src/healthcheck.js');
 const resetsessions= require('./src/resetsessions.js');
-const login= require('./src/login.js');
+const login = require('./src/login.js');
+const logout = require('./src/logout.js');
+const usermod = require('./src/Admin/usermod.js');
 
 
-=======
-#!/usr/bin/env node
-
-const program = require('commander');
-const chalk = require('chalk');
-const  login = require('./src/login');
-
-//Version option
->>>>>>> 058c8ae1d1151829f5214a18fc3d2a99e8be4512
 program
     .version('1.0.0')
     .description('Command Line Interface Software Engineering NTUA 2020 - Project Gridnest')
@@ -44,22 +37,16 @@ program
     .description('User Log In')
     .option('-u, --username [username]', 'User name')
     .option('-p, --passw [passw]', 'Password')
-<<<<<<< HEAD
-    .action(function(cmdObj) {
-        login(cmdObj)
-     });
-=======
     .action(function(cmdObj){
         login(cmdObj);
     });
->>>>>>> 058c8ae1d1151829f5214a18fc3d2a99e8be4512
 program
     .command('Logout')
     .alias('lo')
     .description('User Log Out')
     .option('--apikey  [token]' , 'Add the token returned from the login')
     .action(function(cmdObj) {
-       console.log(cmdObj.apikey);
+        logout(cmdObj);
     });
 program
     .command('SessionsPerEv')
@@ -104,6 +91,13 @@ program
     .option('-u, --username  [username]')
     .option('-p, --password  [password]')
     .option('--apikey  [token]' , 'Add the token returned from the login')
+    .action(function(cmdObj) {
+        if (cmdObj.usermod!==undefined && cmdObj.users==undefined && cmdObj.sessionupd==undefined){
+             usermod(cmdObj)
+
+        }
+
+    });
 
 
 if( process.argv.length < 3 ){

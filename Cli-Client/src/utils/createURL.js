@@ -11,6 +11,9 @@ module.exports = function(type, param1, param2){
         case 'logout':
             return url
 
+        case 'admin/usermod/':
+            return url  + param1  +"/"+param2
+
         }
 
 }
