@@ -26,54 +26,60 @@ program
     .description('User Log In')
     .option('-u, --username [username]', 'User name')
     .option('-p, --passw [passw]', 'Password')
-
+    .action(function(cmdObj) {
+        console.log(`${cmdObj.username}  ${cmdObj.passw}`);
+     });
 program
     .command('Logout')
     .alias('lo')
     .description('User Log Out')
-    .option('--apikey' , 'Add the token returned from the login')
-
+    .option('--apikey  [token]' , 'Add the token returned from the login')
+    .action(function(cmdObj) {
+       console.log(cmdObj.apikey);
+    });
 program
     .command('SessionsPerEv')
     .alias('sev')
     .description('Data for vehicle in the requested time period')
-    .option('--ev[interger id]','Integer for VehicleID ')
-    .option('--datefrom[date]','YYYY-MM-DD')
-    .option('--dateto[date]','YYYY-MM-DD')
-    .option('--format[format]','csv or json')
-    .option('--apikey[token]' , 'Add the token returned from the login')
-
+    .option('--ev  [interger id]','Integer for VehicleID ')
+    .option('--datefrom  [date]','YYYY-MM-DD')
+    .option('--dateto  [date]','YYYY-MM-DD')
+    .option('--format  [format]','csv or json')
+    .option('--apikey  [token]' , 'Add the token returned from the login')
+    .action(function(cmdObj) {
+       console.log(cmdObj.ev);
+    });
 program
     .command('SessionsPerPoint')
     .alias('spoi')
     .description('Data for point in the requested time period')
-    .option('--point[interger id]','String for point id')
-    .option('--datefrom[date]','YYYY-MM-DD')
-    .option('--dateto[date]','YYYY-MM-DD')
-    .option('--format[format]','csv or json')
-    .option('--apikey[token]' , 'Add the token returned from the login')
+    .option('--point   [interger id]','String for point id')
+    .option('--datefrom  [date]','YYYY-MM-DD')
+    .option('--dateto  [date]','YYYY-MM-DD')
+    .option('--format  [format]','csv or json')
+    .option('--apikey  [token]' , 'Add the token returned from the login')
 
 program
     .command('SessionsPerStation')
     .alias('sst')
     .description('Data for station in the requested time period')
-    .option('--ev[interger id]','String for station id ')
-    .option('--datefrom[date]','YYYY-MM-DD')
-    .option('--dateto[date]','YYYY-MM-DD')
-    .option('--format[format]','csv or json')
-    .option('--apikey[token]' , 'Add the token returned from the login')
+    .option('--ev  [interger id]','String for station id ')
+    .option('--datefrom  [date]','YYYY-MM-DD')
+    .option('--dateto  [date]','YYYY-MM-DD')
+    .option('--format  [format]','csv or json')
+    .option('--apikey  [token]' , 'Add the token returned from the login')
  
 program
     .command('Admin')
     .alias('ad')
     .description('Admin management operations')
     .option('-usm, --usermod ', 'Command for Creating a new user.Requires -u,-p,--apikey')
-    .option('-usr, --users[username]','Command for searching a new user.Requires --apikey')
+    .option('-usr, --users  [username]','Command for searching a new user.Requires --apikey')
     .option('-sud, --sessionupd','Command for adding Sessions from csv .Requires -s,--apikey')
-    .option('-s, --source[filename]' , 'Csv file wih correct format')
-    .option('-u, --username[username]')
-    .option('-p, --password[password]')
-    .option('--apikey[token]' , 'Add the token returned from the login')
+    .option('-s, --source  [filename]' , 'Csv file wih correct format')
+    .option('-u, --username  [username]')
+    .option('-p, --password  [password]')
+    .option('--apikey  [token]' , 'Add the token returned from the login')
 
 
 if( process.argv.length < 3 ){
