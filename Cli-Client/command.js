@@ -1,25 +1,33 @@
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
+//node --no-warnings for no warnings
 const program = require('commander');
 const chalk = require('chalk');
-const checkParams = require('./utils/checkParams.js');
-//Version option
-const createURL= require('./utils/createURL.js');
+const healthcheck= require('./src/healthcheck.js');
+const resetsessions= require('./src/resetsessions.js');
+const login= require('./src/login.js');
+
+
 program
     
     .version('1.0.0')
     .description('Command Line Interface Software Engineering NTUA 2020 - Project Gridnest')
 
 program
-    .command('healthCheck')
+    .command('healthcheck')
     .alias('hc')
     .description('Confirms end-to-end connectivity')
+    .action(function() {
+        healthcheck()
+     });
 
 
 program
     .command('Reset')
     .alias('r')
     .description('Resets Sessions and Default Admin')
-
+    .action(function() {
+        resetsessions()
+     });
 
 program
     .command('Login')
@@ -28,8 +36,7 @@ program
     .option('-u, --username [username]', 'User name')
     .option('-p, --passw [passw]', 'Password')
     .action(function(cmdObj) {
-        console.log(checkParams('Login',`${cmdObj.username}`,`${cmdObj.passw}`));
-        console.log(createURL('login',`${cmdObj.username}`,`${cmdObj.passw}`));
+        login(cmdObj)
      });
 program
     .command('Logout')
@@ -105,7 +112,7 @@ else if (    process.argv[2] !== 'SessionsPerPoint'
          &&  process.argv[2] !== 'sev'
          &&  process.argv[2] !== 'Admin'
          &&  process.argv[2] !== 'ad'
-         &&  process.argv[2] !== 'HealthCheck'
+         &&  process.argv[2] !== 'Healthcheck'
          &&  process.argv[2] !== 'hc'
          &&  process.argv[2] !== 'Reset'
          &&  process.argv[2] !== 'r'

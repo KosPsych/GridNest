@@ -6,9 +6,8 @@ module.exports = function(type, param1, param2){
 	let url = base + type;
     switch (type){
         case 'login':
-            url=url+"/"+param1+"/"+param2
-            return url
-    
+            return url;
+            
         case 'logout':
             return url
 

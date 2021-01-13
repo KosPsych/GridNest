@@ -5,6 +5,7 @@ const qs = require('querystring')
 //const https = require('https')
 const checkParams = require('./utils/checkParams');
 const createURL = require('./utils/createURL');
+
 /*
 const agent = new https.Agent({
     cert: fs.readFileSync("../Back-End/cert.pem"),
@@ -14,6 +15,7 @@ const agent = new https.Agent({
   */
 module.exports = function(object){
 
+    
     //Check for parameters
     if( checkParams('login', object.username, object.passw) ){
         console.log(chalk.red('Error! Username and password required'));
@@ -21,11 +23,15 @@ module.exports = function(object){
         console.log(chalk.green('--username   |-u               ex: user2112'));
         console.log(chalk.green('--passw      |-p               ex: ********'));
     }
+
+    //if(1==0) {}
     else{
 
         //Create url
-        let baseUrl = createURL('/Login');
+        let baseUrl = createURL('login');
         //baseUrl = 'http://localhost:8765/evcharge/api/login'
+
+        
         
         //application/x-www-form-urlencoded
         // add token to headers 
@@ -42,16 +48,17 @@ module.exports = function(object){
                     
         //Send post request
 
-        axios.post(baseUrl, qs.stringify(requestBody),  {agent}, config )
+        axios.post(baseUrl, qs.stringify(requestBody), config )
         .then(res => {
                 console.log(chalk.green('User successfully logged in'));
                 console.log("Copy the the following token (apikey) to use in authentication for your next requests :");
-                console.log(res.user_access_token);
+                console.log(res.data.user_access_token);
             })
         .catch(err => {
-            throw err
-            //console.log(chalk.red(err.message));
-            //console.log(chalk.red(err.response.data));
+            //throw err
+            console.log(chalk.red(err));
+            console.log(chalk.red(err.message));
+            
         })
         return;
     }
