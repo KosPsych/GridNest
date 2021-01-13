@@ -17,7 +17,7 @@ module.exports = function(object){
 
     
     //Check for parameters
-    if( checkParams('login', object.username, object.passw) ){
+    if( checkParams('Login', object.username, object.passw) ){
         console.log(chalk.red('Error! Username and password required'));
         console.log(chalk.green('Mandatory Parameters:'));
         console.log(chalk.green('--username   |-u               ex: user2112'));

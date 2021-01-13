@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
 //node --no-warnings for no warnings
 const program = require('commander');
@@ -7,8 +8,16 @@ const resetsessions= require('./src/resetsessions.js');
 const login= require('./src/login.js');
 
 
+=======
+#!/usr/bin/env node
+
+const program = require('commander');
+const chalk = require('chalk');
+const  login = require('./src/login');
+
+//Version option
+>>>>>>> 058c8ae1d1151829f5214a18fc3d2a99e8be4512
 program
-    
     .version('1.0.0')
     .description('Command Line Interface Software Engineering NTUA 2020 - Project Gridnest')
 
@@ -35,9 +44,15 @@ program
     .description('User Log In')
     .option('-u, --username [username]', 'User name')
     .option('-p, --passw [passw]', 'Password')
+<<<<<<< HEAD
     .action(function(cmdObj) {
         login(cmdObj)
      });
+=======
+    .action(function(cmdObj){
+        login(cmdObj);
+    });
+>>>>>>> 058c8ae1d1151829f5214a18fc3d2a99e8be4512
 program
     .command('Logout')
     .alias('lo')
