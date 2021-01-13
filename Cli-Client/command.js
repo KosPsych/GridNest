@@ -1,11 +1,11 @@
+#!/usr/bin/env node
 
 const program = require('commander');
 const chalk = require('chalk');
-const checkParams = require('./utils/checkParams.js');
+const  login = require('./src/login');
+
 //Version option
-const createURL= require('./utils/createURL.js');
 program
-    
     .version('1.0.0')
     .description('Command Line Interface Software Engineering NTUA 2020 - Project Gridnest')
 
@@ -27,10 +27,9 @@ program
     .description('User Log In')
     .option('-u, --username [username]', 'User name')
     .option('-p, --passw [passw]', 'Password')
-    .action(function(cmdObj) {
-        console.log(checkParams('Login',`${cmdObj.username}`,`${cmdObj.passw}`));
-        console.log(createURL('login',`${cmdObj.username}`,`${cmdObj.passw}`));
-     });
+    .action(function(cmdObj){
+        login(cmdObj);
+    });
 program
     .command('Logout')
     .alias('lo')

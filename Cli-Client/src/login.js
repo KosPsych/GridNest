@@ -14,13 +14,16 @@ const agent = new https.Agent({
   */
 module.exports = function(object){
 
+    
     //Check for parameters
-    if( checkParams('login', object.username, object.passw) ){
+    if( checkParams('Login', object.username, object.passw) ){
         console.log(chalk.red('Error! Username and password required'));
         console.log(chalk.green('Mandatory Parameters:'));
         console.log(chalk.green('--username   |-u               ex: user2112'));
         console.log(chalk.green('--passw      |-p               ex: ********'));
     }
+
+    //if(1==0) {}
     else{
 
         //Create url
@@ -46,7 +49,7 @@ module.exports = function(object){
         .then(res => {
                 console.log(chalk.green('User successfully logged in'));
                 console.log("Copy the the following token (apikey) to use in authentication for your next requests :");
-                console.log(res.user_access_token);
+                console.log(res.data.user_access_token);
             })
         .catch(err => {
             throw err
