@@ -6,7 +6,8 @@ import Table from 'react-bootstrap/Table'
 class SessionsPerPoint extends Component {
     state = { 
         Sessions :[] , 
-        second_render :false
+        second_render :false,
+        errors : ""
       }
 
 
@@ -15,12 +16,17 @@ class SessionsPerPoint extends Component {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'x-observatory-auth': localStorage.getItem("token")
-          }}    
-        const {data: Sessions}= await axios.get("https://localhost:8765/evcharge/api/SessionsPerPoint/"+this.props.match.params.PointID+"/"
-        +this.props.match.params.datefrom+"/"+this.props.match.params.dateto,config);
-        this.state.second_render=true
-        this.setState({Sessions})
-    
+          }}   
+          
+        try {
+          const {data: Sessions}= await axios.get("https://localhost:8765/evcharge/api/SessionsPerPoint/"+this.props.match.params.PointID+"/"
+          +this.props.match.params.datefrom+"/"+this.props.match.params.dateto,config);
+          this.state.second_render=true
+          this.setState({Sessions})
+           } 
+        catch (error) {
+          this.setState({errors : error.response.data +" " +error.response.status})
+                      }
        }
 
        render() { 
@@ -67,7 +73,12 @@ class SessionsPerPoint extends Component {
         );
       }
         else{
-           return <h1>Waiting Server response...</h1>
+          if(this.state.errors){
+            return <h1>{this.state.errors}</h1>
+                 }
+          else{
+            return <h1>Waiting Server...</h1>
+              }
             }}
 }
  

@@ -2,9 +2,11 @@ Cli-Client/Sessions33.csv
 Cli-Client/node_modules/
 
 Back-End/node_modules/
-Back-End/Tokens/
+Back-End/Tokens/softeng20bAPI
+
 Back-End/upload_folder/
 Front-End/node_modules/
+Front-End/.eslintcache
 
 # Prerequisites
 *.d

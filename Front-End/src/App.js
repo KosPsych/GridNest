@@ -10,10 +10,10 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import Healthcheck from "./components/healthcheck";
 import Resetsessions from "./components/resetsessions";
-import SessionsPerStation from "./components/SessionsPerStation";
-import SessionsPerPoint from "./components/SessionsPerPoint";
-import SessionsPerEV from "./components/SessionsPerEV";
-import SessionsPerProvider from "./components/SessionsPerProvider";
+import SessionsPerStation from "./components/Sessions/SessionsPerStation";
+import SessionsPerPoint from "./components/Sessions/SessionsPerPoint";
+import SessionsPerEV from "./components/Sessions/SessionsPerEV";
+import SessionsPerProvider from "./components/Sessions/SessionsPerProvider";
 import Usermodform from "./components/Forms/AdminUsermodForm";
 import GetUserForm from "./components/Forms/AdminGetUserForm";
 import SessionsForm from "./components/Forms/SessionsForm";
@@ -24,23 +24,26 @@ import jwtDecode from 'jwt-decode';
 
 class App extends Component {
     state = { 
-        
+       
      }
 
-     componentDidMount(){
-       
-        try {
-           const jwt =localStorage.getItem("token")
-           const user =jwtDecode(jwt)
-           this.setState({user})
+          
+  constructor() {
+    super()
+    try {
+      const jwt =localStorage.getItem("token")
+      const user =jwtDecode(jwt)
+      this.state={user}
         }
-        catch(err){}        
+   catch(err){}        
+      
   }
 
+  
  
 
     render() { 
-        
+  
         return ( 
         <React.Fragment>
             <NavBar user={this.state.user} />
@@ -53,7 +56,7 @@ class App extends Component {
                 <ProtectedRoute path="/evcharge/api/SessionsPerPoint/:PointID/:datefrom/:dateto" user={this.state.user} component={SessionsPerPoint}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerStation/:stationID/:datefrom/:dateto" user={this.state.user} component={SessionsPerStation}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerEV/:VehicleID/:datefrom/:dateto" user={this.state.user} component={SessionsPerEV}/>
-                <ProtectedRoute path="/evcharge/api/SessionsPerStation/:stationID/:datefrom/:dateto" user={this.state.user} component={SessionsPerProvider}/>
+                <ProtectedRoute path="/evcharge/api/SessionsPerProvider/:ProviderID/:datefrom/:dateto" user={this.state.user} component={SessionsPerProvider}/>
 
                 <SessionsProtectedRoute 
                   path="/evcharge/api/SessionsPerPoint/"  

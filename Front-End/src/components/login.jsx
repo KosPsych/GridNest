@@ -7,13 +7,13 @@ class Login extends Component {
         errors : {}
      }
 
-     handleChange = event =>{
-    
+     handleChange = event =>{ 
+        
         this.setState({[event.target.name]: event.target.value});
       };
 
-      handleSubmit = async () =>{
-              
+      handleSubmit = async (event) =>{
+             event.preventDefault();
               try {
                 const name = this.state.username
                 const pass = this.state.password
