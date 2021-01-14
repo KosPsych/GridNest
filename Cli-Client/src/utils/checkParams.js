@@ -18,7 +18,10 @@ module.exports = function(type, param1, param2,param3){
 
         case 'users':
             if(param1==undefined || param2==undefined) return true
-            return false     
+            return false  
+        case 'sessionsupd':
+            if(param1==undefined || param2==undefined) return true
+            return false        
     }
 
 }

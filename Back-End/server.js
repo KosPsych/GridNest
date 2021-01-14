@@ -2,6 +2,8 @@ const app = require('./app')
 const https = require('https');
 const fs = require('fs');
 
+
+
 const credentials = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
@@ -11,6 +13,8 @@ const credentials = {
 require('./db')
 
 const port = 8765;
+
+
 
 app.get('/', (req, res) => {
    res.send('Now using https..');

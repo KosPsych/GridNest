@@ -9,6 +9,7 @@ const login = require('./src/login.js');
 const logout = require('./src/logout.js');
 const usermod = require('./src/Admin/usermod.js');
 const users = require('./src/Admin/users.js');
+const sessionupd = require('./src/Admin/sessionupd.js');
 
 program
     .version('1.0.0')
@@ -92,12 +93,17 @@ program
     .option('-p, --password  [password]')
     .option('--apikey  [token]' , 'Add the token returned from the login')
     .action(function(cmdObj) {
+        
         if (cmdObj.usermod!==undefined && cmdObj.users==undefined && cmdObj.sessionupd==undefined){
              usermod(cmdObj)
         }
         else if(cmdObj.users!==undefined && cmdObj.usermod==undefined && cmdObj.sessionupd==undefined){
             users(cmdObj)
         }
+        else if(cmdObj.sessionupd!==undefined && cmdObj.users==undefined && cmdObj.usermod==undefined){
+            sessionupd(cmdObj)
+        }
+        
 
     });
 

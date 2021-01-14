@@ -15,8 +15,6 @@ module.exports = function(object){
         return;
     }
 
-
-
     Url = createURL("admin/users/",object.username)
 
     const config = {
