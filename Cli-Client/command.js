@@ -8,7 +8,7 @@ const resetsessions= require('./src/resetsessions.js');
 const login = require('./src/login.js');
 const logout = require('./src/logout.js');
 const usermod = require('./src/Admin/usermod.js');
-
+const users = require('./src/Admin/users.js');
 
 program
     .version('1.0.0')
@@ -94,7 +94,9 @@ program
     .action(function(cmdObj) {
         if (cmdObj.usermod!==undefined && cmdObj.users==undefined && cmdObj.sessionupd==undefined){
              usermod(cmdObj)
-
+        }
+        else if(cmdObj.users!==undefined && cmdObj.usermod==undefined && cmdObj.sessionupd==undefined){
+            users(cmdObj)
         }
 
     });

@@ -15,6 +15,10 @@ module.exports = function(type, param1, param2,param3){
         case 'usermod':
             if(param1==undefined || param2==undefined ||param3==undefined) return true
             return false   
+
+        case 'users':
+            if(param1==undefined || param2==undefined) return true
+            return false     
     }
 
 }
