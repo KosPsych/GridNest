@@ -1,7 +1,11 @@
-node_modules/
-../Back-End/Tokens/
+Cli-Client/Sessions33.csv
+Cli-Client/node_modules/
 
-.estlintcache
+Back-End/node_modules/
+Back-End/Tokens/
+Back-End/upload_folder/
+Front-End/node_modules/
+
 # Prerequisites
 *.d
 
