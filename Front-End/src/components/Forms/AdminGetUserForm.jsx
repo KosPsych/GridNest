@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../style.css'
 
 class GetUserForm extends Component {
     state = { 
@@ -19,15 +20,15 @@ class GetUserForm extends Component {
         return ( 
         <form onSubmit={this.handleSubmit}>
             <div>
-                <h1>Enter Username</h1>
+                <h1 className="result">Enter Username</h1>
             </div>   
             <div>  
-              <label>
+              <label className="inputLabel">
                  Username:
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
               </label>
             </div> 
-            <input type="submit" value="Submit" />
+            <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:740}} type="submit" value="Submit" />
          </form>
        );
     }

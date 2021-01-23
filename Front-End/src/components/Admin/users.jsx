@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import '../style.css'
 class Users extends Component {
     state = { 
         second_render: false,
@@ -32,12 +32,12 @@ class Users extends Component {
                 return <h1>{this.state.errors}</h1>
                      }
               else{
-                return <h1>Waiting Server...</h1>
+                return <h1 className="result">Waiting Server...</h1>
                   }
          }
          else {
              return (
-              <ul>
+              <ul className="ResultList">
                 <li>Username : {this.state.UserData[0].Username}</li>
                 <li>Password : {this.state.UserData[0].Password}</li>
                 <li>isAdmin : {this.state.UserData[0].isAdmin}</li>

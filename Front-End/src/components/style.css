@@ -1,0 +1,27 @@
+.primary {
+    color :red;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(119, 146, 153);
+  }
+
+
+.result{
+    text-align: center;
+    margin-top: 80px;
+
+}
+
+.inputLabel{
+    margin-top: 20px; 
+    margin-left: 650px; 
+
+}
+
+.ResultList{
+    margin-top: 70px; 
+    
+    list-style: square;
+  }

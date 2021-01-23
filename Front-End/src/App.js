@@ -8,8 +8,8 @@ import ProtectedRoute from "./components/protectedRoute";
 import SessionsProtectedRoute from "./components/SessionsProtectedRoute";
 import Login from "./components/login";
 import Logout from "./components/logout";
-import Healthcheck from "./components/healthcheck";
-import Resetsessions from "./components/resetsessions";
+import Healthcheck from "./components/Admin/healthcheck";
+import Resetsessions from "./components/Admin/resetsessions";
 import SessionsPerStation from "./components/Sessions/SessionsPerStation";
 import SessionsPerPoint from "./components/Sessions/SessionsPerPoint";
 import SessionsPerEV from "./components/Sessions/SessionsPerEV";
@@ -49,9 +49,6 @@ class App extends Component {
             <NavBar user={this.state.user} />
             <main>
                 <Switch>
-                
-                
-                
 
                 <ProtectedRoute path="/evcharge/api/SessionsPerPoint/:PointID/:datefrom/:dateto" user={this.state.user} component={SessionsPerPoint}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerStation/:stationID/:datefrom/:dateto" user={this.state.user} component={SessionsPerStation}/>

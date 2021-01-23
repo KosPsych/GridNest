@@ -11,8 +11,7 @@ class SessionsForm extends Component {
 
 
   handleChange = event =>{
-    
-    this.setState({[event.target.name]: event.target.value});
+      this.setState({[event.target.name]: event.target.value});
   };
 
 
@@ -44,11 +43,9 @@ class SessionsForm extends Component {
                 
               </form>
          </div>
-         
          <div>
          <Link to={"/evcharge/api/"+this.props.SessionType+"/"+this.state.ID+"/"+this.state.DateFrom.replace(/-/ig, '')+"/"+this.state.DateTo.replace(/-/ig, '')}>Submit Link</Link>
          </div>
-
          </React.Fragment>
          );
     }

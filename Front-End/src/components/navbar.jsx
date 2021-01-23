@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link ,NavLink} from "react-router-dom";
-
+//navbar navbar-expand-lg navbar-light bg-dark
 const NavBar = ({ user }) => {
-    return  <nav className ="navbar navbar-expand-lg navbar-light bg-light">
+    return  <nav className ="navbar navbar-expand-sm bg-dark navbar-dark">
               <Link className ="navbar-brand" to="/evcharge/api">GridNest</Link>
               <button className ="navbar-toggler" type="button" data-toggle="collapse" data-target="/navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span className ="navbar-toggler-icon"></span>
