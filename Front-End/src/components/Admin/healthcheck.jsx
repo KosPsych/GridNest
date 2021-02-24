@@ -15,12 +15,12 @@ class Healthcheck extends Component {
     }
     render() { 
         return ( 
-          <React.Fragment>
-           <button  style={{width:170,backgroundColor:'white',marginTop:180,marginLeft:710}} onClick={this.healthcheck}>
+            <div className="container2">
+           <button  style={{width:170,backgroundColor:'white',marginTop:50,marginLeft:90}} onClick={this.healthcheck}>
               Healthcheck
            </button> 
-           <h1 className="result">Status : {this.state.status} </h1>
-          </React.Fragment>
+           <h1 className="result2">Status : {this.state.status} </h1>
+           </div>
               );
     }
 }

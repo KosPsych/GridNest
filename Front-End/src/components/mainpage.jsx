@@ -5,7 +5,7 @@ import './style.css'
          
       }
       render() { 
-          return ( <h1 className='primary'>This is the main page</h1>);
+          return (<h1>This is the main Page</h1> );
       }
   }
    

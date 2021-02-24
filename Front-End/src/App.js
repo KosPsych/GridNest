@@ -21,7 +21,7 @@ import UserMod from "./components/Admin/usermod";
 import GetUser from "./components/Admin/users";
 import SessionsUpd from "./components/Admin/sessionsupd";
 import jwtDecode from 'jwt-decode';
-
+import './components/style.css'
 class App extends Component {
     state = { 
        
@@ -45,7 +45,7 @@ class App extends Component {
     render() { 
   
         return ( 
-        <React.Fragment>
+        <div >
             <NavBar user={this.state.user} />
             <main>
                 <Switch>
@@ -102,8 +102,8 @@ class App extends Component {
 
                 </Switch>
             </main>
-             
-        </React.Fragment>
+        
+        </div>
         );
     }
 }

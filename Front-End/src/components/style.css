@@ -3,20 +3,50 @@
     text-align: center;
 }
 
-body {
+/*body {
     background-color: rgb(119, 146, 153);
+  } */
+
+  body {
+    background-image: url(./images/backround.png);
+  }
+.container{
+    background-image: url(./images/form.jpg);
+    width: 350px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  height: 220px; 
   }
 
+  .container2{
+    background-image: url(./images/form.jpg);
+    width: 350px;
+    opacity: 0.6;
+    border-radius: 25px;  
+    height: 220px; 
+    display: block;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .result2{
+    text-align: center;
+    margin-top: 30px;
+    
+}
+  
 .result{
     text-align: center;
-    margin-top: 80px;
-
+    margin-top: 200px;
+    font-family: 'Copperplate', sans-serif;
 }
 
 .inputLabel{
-    margin-top: 20px; 
-    margin-left: 650px; 
+  font-family: 'Roboto Medium', sans-serif;
 
 }
 
