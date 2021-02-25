@@ -1,18 +1,9 @@
 const axios = require('axios');
 const chalk = require('chalk');
-//const fs = require('fs');
 const qs = require('querystring')
-//const https = require('https')
 const checkParams = require('./utils/checkParams');
 const createURL = require('./utils/createURL');
 
-/*
-const agent = new https.Agent({
-    cert: fs.readFileSync("../Back-End/cert.pem"),
-    key: fs.readFileSync("../Back-End/key.pem"),
-    passphrase: "YYY"
-  })
-  */
 module.exports = function(object){
 
     
@@ -24,12 +15,10 @@ module.exports = function(object){
         console.log(chalk.green('--passw      |-p               ex: ********'));
     }
 
-    //if(1==0) {}
     else{
 
         //Create url
         let baseUrl = createURL('login');
-        //baseUrl = 'http://localhost:8765/evcharge/api/login'
 
         
         
@@ -51,7 +40,7 @@ module.exports = function(object){
         axios.post(baseUrl, qs.stringify(requestBody), config )
         .then(res => {
                 console.log(chalk.green('User successfully logged in'));
-                console.log("Copy the following token (apikey) to use in authentication for your next requests :");
+                console.log(chalk.green("Copy the following token (apikey) to use in authentication for your next requests :"));
                 console.log(res.data.user_access_token);
             })
         .catch(err => {

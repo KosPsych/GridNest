@@ -8,7 +8,7 @@ module.exports = function(object){
     
     //Check for parameters
     
-    if( checkParams('SessionsPerStations', object.apikey) ){
+    if( checkParams('SessionsPerPoint',object.point,object.datefrom,object.dateto,object.format,object.apikey) ){
         console.log(chalk.red('Error! Please enter correct parameters:'));
         console.log(chalk.green('Mandatory Parameters:'));
         console.log(chalk.green('--point               ex: 1-1-178-817'));
@@ -18,12 +18,10 @@ module.exports = function(object){
         console.log(chalk.green('--apikey              ex: asdasdmadmadxmawmdxamdma'));
     }
     
-    //if(1==0) {}
     else{
 
         //Create url
-        let baseUrl = createURL('/SessionsPerStation',object.point,object.datefrom,object.dateto,object.format,object.token);
-        //const baseUrl = 'https://localhost:8765/evcharge/api/SessionsPerPoint/1-1-178-817/20181009/20181016?format=csv'
+        let baseUrl = createURL('SessionsPerPoint/',object.point,object.datefrom,object.dateto,object.format,object.apikey);
 
         // add apikey to headers 
         const config = {

@@ -1,7 +1,6 @@
 const axios = require('axios');
 const chalk = require('chalk');
 const checkParams = require('./utils/checkParams');
-const createURL = require('./utils/createURL');
 
 module.exports = function(object){
 
@@ -12,7 +11,6 @@ module.exports = function(object){
         console.log(chalk.red('Error! Please insert your unique apikey to Logout'));
     }
 
-    //if(1==0) {}
     else{
 
         //Create url
