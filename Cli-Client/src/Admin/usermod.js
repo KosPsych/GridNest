@@ -47,7 +47,6 @@ module.exports = function(object){
             })
         .catch(err => {
             
-            console.log(chalk.red(err));
             console.log(chalk.red(err.message));
             
         })
