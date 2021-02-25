@@ -31,7 +31,7 @@ function getSessionsPerEV(req, res) {
     
         db.query(getSessions, (err, rows) => {
 
-            if(err) res.status(400).send(err.message) 
+            if(err) res.status(400).send("Incorrect Data Format.Please insert the correct format for each field") 
 
             else if (rows=='') res.status(402).send("No Data")
             else {
@@ -76,7 +76,7 @@ function getSessionsPerEV(req, res) {
 
         db.query(getSessions,[1,2,3], (err, rows) => {
 
-            if(err) res.status(400).send(err.message) 
+            if(err) res.status(400).send("Incorrect Data Format.Please insert the correct format for each field") 
             else if (rows[0].length < 1 || rows[1].length < 1) res.status(402).send("No Data")
             else {
                     // Add request parameters and convert date and datetime to desired endpoint values
