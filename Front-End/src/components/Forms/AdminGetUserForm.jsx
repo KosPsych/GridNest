@@ -18,17 +18,17 @@ class GetUserForm extends Component {
     
     render() { 
         return ( 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="container4">
             <div>
-                <h1 className="result">Enter Username</h1>
+                <h1 className="headermod">Enter Username</h1>
             </div>   
             <div>  
-              <label className="inputLabel">
+              <label className="AdminGetInputLabel">
                  Username:
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
               </label>
             </div> 
-            <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:740}} type="submit" value="Submit" />
+            <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:110}} type="submit" value="Submit" />
          </form>
        );
     }

@@ -3,9 +3,7 @@
     text-align: center;
 }
 
-/*body {
-    background-color: rgb(119, 146, 153);
-  } */
+
 
   body {
     background-image: url(./images/backround.png);
@@ -33,25 +31,248 @@
     margin-right: auto;
   }
 
-  .result2{
-    text-align: center;
-    margin-top: 30px;
-    
+  .container3{
+    background-image: url(./images/form.jpg);
+    width: 380px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px; 
+  }
+
+  .container4{
+    background-image: url(./images/form.jpg);
+    width: 350px;
+    opacity: 0.6;
+    border-radius: 25px;  
+    height: 180px; 
+    display: block;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .container5{
+    background-image: url(./images/form.jpg);
+    width: 370px;
+    opacity: 0.6;
+    border-radius: 25px;  
+    height: 220px; 
+    display: block;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.SessionsLink{
+  margin-left: 130px;
+  color: black;
+  display: inline-block;
+
 }
-  
+
+
+
+.result2{
+    text-align: center;
+    margin-top: 30px;  
+}
+
+.Login{
+  text-align: center;
+  margin-top: 200px;
+  font-family: 'Copperplate', sans-serif;
+}
+
+.headermod{
+  text-align: center;
+  margin-top: 200px;
+  font-family: 'Copperplate', sans-serif;
+}
 .result{
+    background-image: url(./images/form.jpg);
+    width: 300px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px; 
     text-align: center;
     margin-top: 200px;
     font-family: 'Copperplate', sans-serif;
 }
 
-.inputLabel{
-  font-family: 'Roboto Medium', sans-serif;
 
+.AdminGetInputLabel{
+  font-family: 'Roboto Medium';
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.AdminModInputLabel{
+  font-family: 'Roboto Medium';
+  margin-left: 20px;
 }
 
 .ResultList{
-    margin-top: 70px; 
+    background-image: url(./images/form.jpg);
+    width: 700px;
+    opacity: 0.8;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 157px; 
+    text-align: center;
+    margin-top: 200px;  
+    margin-top: 150px; 
+    list-style: none;
+    font-family: Impact, fantasy;
+  }
+
+
+  .SessionsResultList{
+    background-image: url(./images/form.jpg);
+    width: 700px;
+    opacity: 0.8;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px; 
+    text-align: center;
+    margin-top: 200px;  
+    margin-top: 150px; 
+    list-style: none;
+    font-family: Impact, fantasy;
+  }
+
+  .SessionsperEVResultList{
+    background-image: url(./images/form.jpg);
+    width: 700px;
+    opacity: 0.8;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 170px; 
+    text-align: center;
+    margin-top: 200px;  
+    margin-top: 150px; 
+    list-style: none;
+    font-family: Impact, fantasy;
+  }
+  .SessionsPointResultList{
+    background-image: url(./images/form.jpg);
+    width: 400px;
+    opacity: 0.8;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px; 
+    text-align: center;
+    margin-top: 200px;  
+    margin-top: 150px; 
+    list-style: none;
+    font-family: Impact, fantasy;
+  }
+
+  .SessionsperProviderResultList{
+    background-image: url(./images/form.jpg);
+    width: 400px;
+    opacity: 0.8;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 55px; 
+    text-align: center;
+    margin-top: 200px;  
+    margin-top: 150px; 
+    list-style: none;
+    font-family: Impact, fantasy;
+  }
+
+
+  table{
+    background-image: url(./images/form.jpg);
+    table-layout: fixed;
+    width: 180px;
+    opacity: 0.8;
+  }
+
+  .barchart{
     
-    list-style: square;
+    margin-top:600px;
+  }
+  .error{
+    font-family: Copperplate;
+    font-size:18px;
+    color :rgb(117, 26, 26);
+    text-align: center;
+  }
+
+
+  .table-wrapper {
+    position:absolute;
+  }
+  .table-scroll {
+    height:400px;
+    overflow:auto;  
+    margin-top:20px;
+  }
+
+
+
+  .sessionsupdheader {
+    margin-top:200px;
+    margin-left:80px;
+  }
+
+  .sessionsupd{
+    background-image: url(./images/form.jpg);
+    width: 400px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  height: 220px; 
+  }
+
+  .sessionsupdlist{
+    background-image: url(./images/form.jpg);
+    width: 400px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 220px;
+  }
+
+  .sessionserror{
+    color :rgb(117, 26, 26);
+  }
+
+  .Sessionsimportreturn{
+    background-image: url(./images/form.jpg);
+    width: 400px;
+    opacity: 0.6;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px; 
+    margin-top: 200px;
+    font-family: Impact, fantasy;
+  }
+
+  .PieChart{
+    
+    margin-top:600px;
   }

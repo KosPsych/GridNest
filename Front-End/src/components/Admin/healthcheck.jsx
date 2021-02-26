@@ -16,10 +16,11 @@ class Healthcheck extends Component {
     render() { 
         return ( 
             <div className="container2">
-           <button  style={{width:170,backgroundColor:'white',marginTop:50,marginLeft:90}} onClick={this.healthcheck}>
+           <h1 className="result2">Status : {this.state.status} </h1>
+           <button  style={{width:170,backgroundColor:'white',marginTop:30,marginLeft:90}} onClick={this.healthcheck}>
               Healthcheck
            </button> 
-           <h1 className="result2">Status : {this.state.status} </h1>
+           
            </div>
               );
     }

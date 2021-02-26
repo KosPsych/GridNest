@@ -29,7 +29,7 @@ class Users extends Component {
     render() { 
          if (!this.state.second_render){
             if(this.state.errors){
-                return <h1>{this.state.errors}</h1>
+                return <h1 className="result">{this.state.errors}</h1>
                      }
               else{
                 return <h1 className="result">Waiting Server...</h1>
@@ -38,7 +38,7 @@ class Users extends Component {
          else {
              return (
               <ul className="ResultList">
-                <li>Username : {this.state.UserData[0].Username}</li>
+                <li >Username : {this.state.UserData[0].Username}</li>
                 <li>Password : {this.state.UserData[0].Password}</li>
                 <li>isAdmin : {this.state.UserData[0].isAdmin}</li>
                 <li>FirstName : {this.state.UserData[0].FirstName}</li>

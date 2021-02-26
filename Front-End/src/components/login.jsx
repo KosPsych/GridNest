@@ -7,7 +7,7 @@ class Login extends Component {
     state = { 
         username :"",
         password :"",
-        errors : {}
+        errors : ""
      }
 
      handleChange = event =>{ 
@@ -35,7 +35,7 @@ class Login extends Component {
                 
                 
               } catch (error) {
-                console.log(error)
+                this.setState({errors :error.message})
                 
              }             
       };
@@ -44,10 +44,11 @@ class Login extends Component {
     render() { 
       
         return ( 
+           <React.Fragment>
             <div className="container">
             <form onSubmit={this.handleSubmit}>
              <div >
-                  <h1 className="result">Login</h1> {/*className="result" */}
+                  <h1 className="Login">Login</h1> {/*className="result" */}
              </div>   
              <div>  
             <label className="inputLabel"> {/*className="inputLabel" */}
@@ -58,13 +59,17 @@ class Login extends Component {
             <div> 
             <label className="inputLabel">  {/*className="inputLabel" */}
               Password:
-              <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+              <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
             </label>
             </div> 
             <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:100}} type="submit" value="Submit" /> 
+            
           </form>
           
           </div> 
+          { this.state.errors && <h1 className="error">{this.state.errors}</h1>}
+          </React.Fragment>
+          
         );
     }
 }

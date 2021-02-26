@@ -31,25 +31,27 @@ class SessionsUpdate extends Component {
     render() { 
          if (!this.state.second_render){
          return  (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="sessionsupd">
                <div>
-                 <h1 className="result">Choose a  csv file to store</h1>
+                 <h1 className="sessionsupdheader">Upload a file</h1>
                </div>   
                <div>     
-                 <fieldset style={{marginTop:20,marginLeft:740}}>
+                 <fieldset style={{marginTop:40,marginLeft:130}}>
                    <input type="file"  accept=".csv" onChange={this.onFileChange}/>
                  </fieldset>
                </div> 
-                    <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:740}} type="submit" value="Submit" />
+                    <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:130}} type="submit" value="Submit" />
             </form>
          ); }
          else {
              return (
-              <ul style={{marginTop:30}}>
+               <div className="Sessionsimportreturn">
+              <ul >
                 <li>SessionsImported : {this.state.QueryResult.SessionsImported}</li>
                 <li>SessionsInUploadedFile : {this.state.QueryResult.SessionsInUploadedFile}</li>
                 <li>TotalSessionsInDatabase : {this.state.QueryResult.TotalSessionsInDatabase}</li>
               </ul>  
+              </div>
                     );
                }}
 }

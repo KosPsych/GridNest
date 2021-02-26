@@ -20,23 +20,23 @@ class UserModForm extends Component {
     
     render() { 
         return ( 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="container3">
             <div>
-                <h1 className="result">Enter User Information</h1>
+                <h1 className="headermod">Enter user Information</h1>
             </div>   
             <div>  
-              <label className="inputLabel">
+              <label className="AdminModInputLabel">
                  Username:
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
               </label>
             </div> 
             <div> 
-              <label className="inputLabel">
+              <label className="AdminModInputLabel">
                 Password:
                 <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
               </label>
             </div> 
-                <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:740}} type="submit" value="Submit" />
+                <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:130}} type="submit" value="Submit" />
          </form>
        );
     }
