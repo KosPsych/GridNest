@@ -10,6 +10,10 @@ function AddSessions(req,res){
 
       let csvStream = fastcsv
           .parse()
+          .on('error', function(error) {
+              res.status(400).send("Incorrect Data format.Please enter a csv file");
+              return
+          })
           .on("data", function(data) {
             csvData.push(data);
           })
@@ -20,13 +24,13 @@ function AddSessions(req,res){
               let insert_query = "INSERT IGNORE  INTO Sessions(SessionID, StationID,PointID, Username, VehicleID, connectionTime,"+
               " doneCharginTime, Timezone ,KwhDelivered ,Protocol,Payment )  VALUES ?";
               db.query(insert_query, [csvData], (err, db_res) => {
-                  if (err) res.send("Incorrect Data format for  Sessions or File is too big(larger than 1GB)")
+                  if (err) res.status(400).send("Incorrect Data format for  Sessions or File is too big(larger than 1GB)")
                   else{
                       let count_query = "SELECT Count(*) as count FROM Sessions";
                       db.query(count_query, (err1, result) => {
                           if (err1) res.send(err1.message)
                           else {
-                              res.send({SessionsInUploadedFile :db_res.affectedRows +  db_res.warningCount , SessionsImported : db_res.affectedRows, TotalSessionsInDatabase :result[0].count});
+                              res.status(200).send({SessionsInUploadedFile :db_res.affectedRows +  db_res.warningCount , SessionsImported : db_res.affectedRows, TotalSessionsInDatabase :result[0].count});
 
 
                         }
