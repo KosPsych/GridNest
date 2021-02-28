@@ -12,7 +12,7 @@ module.exports = function(){
             //throw err
             console.log(chalk.red(err));
             console.log(chalk.red(err.message));
-            
+
         })
         return;
 

@@ -4,30 +4,25 @@ const checkParams = require('./utils/checkParams');
 
 module.exports = function(object){
 
-    
-    //Check for parameters
-    
-    if( checkParams('logout', object.apikey) ){
-        console.log(chalk.red('Error! Please insert your unique apikey to Logout'));
-    }
+      //Check for parameters
+      if( checkParams('logout', object.apikey) ){
+          console.log(chalk.red('Error! Please insert your unique apikey to Logout'));
+      }
 
-    else{
-
+      else{
         //Create url
-        
         const baseUrl = 'https://localhost:8765/evcharge/api/logout'
-        
-        // add apikey to headers 
+
+        // add apikey to headers
         const config = {
             headers: {
                 'X-OBSERVATORY-AUTH' : object.apikey
             }
         }
 
-                    
-        //Send get request
 
-        axios.post(baseUrl, {},config )
+        //Send get request
+        axios.post(baseUrl, {}, config )
         .then(res => {
                 console.log(chalk.green('User successfully logged out'));
             })
@@ -36,6 +31,5 @@ module.exports = function(object){
             console.log(chalk.red(err.response.data));
         })
         return;
-    }
-
+      }
 };

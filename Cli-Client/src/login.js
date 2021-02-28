@@ -6,7 +6,7 @@ const createURL = require('./utils/createURL');
 
 module.exports = function(object){
 
-    
+
     //Check for parameters
     if( checkParams('Login', object.username, object.passw) ){
         console.log(chalk.red('Error! Username and password required'));
@@ -16,14 +16,13 @@ module.exports = function(object){
     }
 
     else{
-
         //Create url
         let baseUrl = createURL('login');
 
-        
-        
+
+
         //application/x-www-form-urlencoded
-        // add token to headers 
+        // add token to headers
         const config = {
             headers: {
                 'Content-Type' : 'application/x-www-form-urlencoded',
@@ -34,7 +33,7 @@ module.exports = function(object){
             username: object.username,
             password: object.passw
         };
-                    
+
         //Send post request
 
         axios.post(baseUrl, qs.stringify(requestBody), config )
@@ -47,7 +46,7 @@ module.exports = function(object){
             //throw err
             console.log(chalk.red(err));
             console.log(chalk.red(err.message));
-            
+
         })
         return;
     }

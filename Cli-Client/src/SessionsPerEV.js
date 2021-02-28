@@ -5,10 +5,10 @@ const createURL = require('./utils/createURL');
 
 module.exports = function(object){
 
-    
+
     //Check for parameters
-    
-    if( checkParams('SessionsPerEv' ,object.ev,object.datefrom,object.dateto,object.format,object.apikey)){
+
+    if( checkParams('SessionsPerEv' ,object.ev, object.datefrom, object.dateto, object.format, object.apikey)){
         console.log(chalk.red('Error! Please enter correct parameters:'));
         console.log(chalk.green('Mandatory Parameters:'));
         console.log(chalk.green('--ev                  ex: 5'));
@@ -21,23 +21,23 @@ module.exports = function(object){
     else{
 
         //Create url
-        let baseUrl = createURL('SessionsPerEv/',object.ev,object.datefrom,object.dateto,object.format,object.apikey);
+        let baseUrl = createURL('SessionsPerEv/',object.ev, object.datefrom, object.dateto, object.format, object.apikey);
 
-        // add apikey to headers 
+        // add apikey to headers
         const config = {
             headers: {
                 'x-observatory-auth' : object.apikey
             }
         }
 
-                    
+
         //Send get request
 
         axios.get(baseUrl,config )
         .then(res => {
             if (object.format =='csv')
             console.log(chalk.green(res.data));
-            else 
+            else
             console.log(res.data);
             })
         .catch(err => {
