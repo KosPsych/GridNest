@@ -10,9 +10,7 @@ module.exports = (app) => {
             cb(null, "upload_file.csv")
         }
         })
-        
-    let upload = multer({ storage: storage }) 
-    app.post('/evcharge/api/admin/system/sessionsupd',[ verifyToken,upload.single('file')], Add_Sessions)
+
+    let upload = multer({ storage: storage })
+    app.post('/evcharge/api/admin/system/sessionsupd',[ verifyToken, upload.single('file')], Add_Sessions)
 }
-
-
