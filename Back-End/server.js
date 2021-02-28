@@ -15,7 +15,6 @@ require('./db')
 const port = 8765;
 
 
-
 app.get('/', (req, res) => {
    res.send('Now using https..');
 });
