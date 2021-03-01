@@ -129,6 +129,13 @@ program
           resetsessions(cmdObj)
         }
         else {
+          console.log(chalk.red('Error!Incorrect arguments .'));
+          console.log(chalk.green('Choose one from the following admin commands:'));
+          console.log(chalk.green('--usermod                  |-usm'));
+          console.log(chalk.green('--users                    |-usr'));
+          console.log(chalk.green('--sessionupd               |-sud'));
+          console.log(chalk.green('--resetsessions            |-res'));
+          console.log(chalk.green('For more info about the Admin commands, type "Admin --help"'))
 
         }
     });
@@ -170,7 +177,7 @@ else if (   process.argv.length >= 3
     console.log(chalk.red('Error! Command not supported'));
     console.log(chalk.green('For more info, type --help'));
 }
-if ( process.argv.length > 13 && (process.argv[2] == 'SessionsPerPoint' || process.argv[2] == 'spoi' || process.argv[2] == 'SessionsPerStation' || process.argv[2] == 'sst' || process.argv[2] == 'SessionsPerEV' ||  process.argv[2] == 'sev' || process.argv[2] == 'SessionsPerProvider' || process.argv[2] == 'spro')) {
+else if ( process.argv.length > 13 && (process.argv[2] == 'SessionsPerPoint' || process.argv[2] == 'spoi' || process.argv[2] == 'SessionsPerStation' || process.argv[2] == 'sst' || process.argv[2] == 'SessionsPerEV' ||  process.argv[2] == 'sev' || process.argv[2] == 'SessionsPerProvider' || process.argv[2] == 'spro')) {
   console.log(chalk.red('Error! Command not supported. Too many arguments'));
   console.log(chalk.green('For more info, type --help'));
 }
