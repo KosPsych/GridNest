@@ -2,8 +2,6 @@ const db = require('../db')
 
 const {arrayToCSV , convert_datetime , convert_date} = require('./HelpfulFunctions')
 
-
-
 function getSessionsPerEV(req, res) {
     
     if (req.query.format == 'csv') {
@@ -99,5 +97,4 @@ function getSessionsPerEV(req, res) {
     }
 
 }
-
 module.exports = getSessionsPerEV;

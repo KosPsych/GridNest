@@ -1,7 +1,8 @@
 const app = require('./app')
 const https = require('https');
 const fs = require('fs');
-
+const dbase = require('./db');
+const config = require('config');
 
 
 const credentials = {
@@ -10,7 +11,16 @@ const credentials = {
 };
 
 //connect to the database
-require('./db')
+
+dbase.connect(err => {
+  if (err) throw err;
+  else console.log(`Successfully connected to database : ${config.get('database.database')}`)
+})
+
+
+dbase.query("SET GLOBAL max_allowed_packet=1073741824;", function (err, result) {
+      if (err) throw err;
+  });
 
 const port = 8765;
 
