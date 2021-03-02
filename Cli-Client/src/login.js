@@ -4,6 +4,22 @@ const qs = require('querystring')
 const checkParams = require('./utils/checkParams');
 const createURL = require('./utils/createURL');
 
+const fs = require('fs')
+function save_user_access_token(user_access_token){
+    var dir = './Tokens'
+  
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+  
+    var file = 'softeng20bAPI'
+  
+    var path = dir + '/' +  file
+  
+    fs.writeFileSync(path, user_access_token)
+    console.log("Token saved successfully\n");
+  
+    return;
+  }
+
 module.exports = function(object){
 
 
@@ -38,6 +54,7 @@ module.exports = function(object){
 
         axios.post(baseUrl, qs.stringify(requestBody), config )
         .then(res => {
+                save_user_access_token(res.data.user_access_token)
                 console.log(chalk.green('User successfully logged in'));
                 console.log(chalk.green("Copy the following token (apikey) to use in authentication for your next requests :"));
                 console.log(res.data.user_access_token);
@@ -48,7 +65,7 @@ module.exports = function(object){
             console.log(chalk.red(err.message));
 
         })
-        return;
+        
     }
 
 };

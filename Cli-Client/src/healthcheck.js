@@ -14,6 +14,6 @@ module.exports = function(){
             console.log(chalk.red(err.message));
 
         })
-        return;
+        
 
 }
