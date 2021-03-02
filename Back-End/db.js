@@ -15,16 +15,10 @@ dbase.connect(err => {
     else console.log("Successfully connected to the database.")
 })
 
-/*
-dbase.query("SELECT * from Sessions", function (err, result) {
-        if (err) throw err;
-        else{
-            console.log("Success")
-            dbase.end();
-            return;
-        }
 
+dbase.query("SET GLOBAL max_allowed_packet=1073741824;", function (err, result) {
+        if (err) throw err;
     });
-*/
+
 
 module.exports = dbase;

@@ -8,7 +8,7 @@ function verifyToken(req, res, next) {
 
     const token  = req.headers['x-observatory-auth']
 
-    if (!token)  res.status(401).send('Not Authorized')
+    if (!token)  res.status(400).send('Missing Token')
     else{
         var dir = './Tokens'
 

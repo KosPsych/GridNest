@@ -2,7 +2,7 @@ const db = require('../db')
 
 function AdminReadUser(req,res){
 
-  if(req.user.isAdmin!='1') res.status(401).send('Lack of Authorization')
+  if(req.user.isAdmin!='1' && req.user.isAdmin!='2') res.status(401).send('Lack of Authorization')
   else{
     const username = req.params.username;
     let users_info = 'SELECT * FROM Users WHERE Username='.concat("'", username, "';");
