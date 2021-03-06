@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import '../style.css'
 class UserMod extends Component {
     state = { 
         second_render: false,
@@ -21,16 +21,16 @@ class UserMod extends Component {
 
     render() { 
         if (!this.state.second_render){
-        return  <h1>Waiting server response..</h1> 
+        return  <h1 className="result">Waiting server response..</h1> 
         }
         else {
           if(this.state.Response.message){
-             return <h1>User Updated</h1>
+             return <h1 className="result">User Updated</h1>
           }
           else{
-             return <h1>User Added</h1>
+             return <h1 className="result">User Added</h1>
               }  
-              }}
+            }}
 }
  
 export default UserMod;

@@ -7,7 +7,7 @@ const secretToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSl
 function login(req, res) {
 
         if (!req.user){
-          return res.status(401).send('Username or Password are Incorrect')
+          return res.status(400).send('Username or Password are Incorrect')
         }
         var user_access_token = user_access_token_generation(req.user)
 

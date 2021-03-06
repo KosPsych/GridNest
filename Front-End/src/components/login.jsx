@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import './style.css'
+
+
 class Login extends Component {
     state = { 
         username :"",
         password :"",
-        errors : {}
+        errors : ""
      }
 
-     handleChange = event =>{
-    
+     handleChange = event =>{ 
+        
         this.setState({[event.target.name]: event.target.value});
       };
 
-      handleSubmit = async () =>{
-              
+      handleSubmit = async (event) =>{
+             event.preventDefault();
               try {
                 const name = this.state.username
                 const pass = this.state.password
@@ -32,43 +35,41 @@ class Login extends Component {
                 
                 
               } catch (error) {
-                console.log(error)
+                this.setState({errors :error.message})
                 
-              }
-              
-              
-             
-            
-         
-               
-        
+             }             
       };
 
 
     render() { 
       
         return ( 
-              
+           <React.Fragment>
+            <div className="container">
             <form onSubmit={this.handleSubmit}>
-              <div>
-                  <h1>Login</h1>
+             <div >
+                  <h1 className="Login">Login</h1> {/*className="result" */}
              </div>   
              <div>  
-            <label>
+            <label className="inputLabel"> {/*className="inputLabel" */}
               Username:
               <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
             </label>
             </div> 
             <div> 
-            <label>
+            <label className="inputLabel">  {/*className="inputLabel" */}
               Password:
-              <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+              <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
             </label>
             </div> 
-            <input type="submit" value="Submit" />
+            <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:100}} type="submit" value="Submit" /> 
+            
           </form>
-        
-        
+          
+          </div> 
+          { this.state.errors && <h1 className="error">{this.state.errors}</h1>}
+          </React.Fragment>
+          
         );
     }
 }

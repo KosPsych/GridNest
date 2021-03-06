@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import '../style.css'
 class Healthcheck extends Component {
     state = { 
        status : "Not Defined"
@@ -14,12 +15,13 @@ class Healthcheck extends Component {
     }
     render() { 
         return ( 
-          <React.Fragment>
-           <button onClick={this.healthcheck}>
+            <div className="container2">
+           <h1 className="result2">Status : {this.state.status} </h1>
+           <button  style={{width:170,backgroundColor:'white',marginTop:30,marginLeft:90}} onClick={this.healthcheck}>
               Healthcheck
            </button> 
-           <h1>Status : {this.state.status} </h1>
-          </React.Fragment>
+           
+           </div>
               );
     }
 }
