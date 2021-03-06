@@ -43,7 +43,7 @@ class SessionsPerPoint extends Component {
           var phev=0
           var bev=0
           for (var i=0;  i<Sessions.ChargingSessionsList.length; i++){
-             if (Sessions.ChargingSessionsList[i].VehicleType=="phev"){
+             if (Sessions.ChargingSessionsList[i].VehicleType==="phev"){
               phev=phev+1
              }
              else{
