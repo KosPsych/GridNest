@@ -2,6 +2,7 @@ const axios = require('axios');
 const chalk = require('chalk');
 const checkParams = require('./utils/checkParams');
 const createURL = require('./utils/createURL');
+const fs = require('fs')
 
 module.exports = function(object){
 

@@ -13,7 +13,7 @@ module.exports = function(object){
 
   else{
     if (object.apikey!= fs.readFileSync('./Tokens/softeng20bAPI', {encoding:'utf8', flag:'r'}) )
-    console.log(chalk.red('Error 401 : Not Authorized'));
+      console.log(chalk.red('Error 401 : Not Authorized'));
     else {
 
       let Url="https://localhost:8765/evcharge/api/admin/resetsessions"
