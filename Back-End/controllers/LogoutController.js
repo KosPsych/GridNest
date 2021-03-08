@@ -6,7 +6,7 @@ function logout(req, res) {
 	var user_logout_token = authHeader
 
 	if(!user_logout_token)
-		return res.status(401).send('Missing Logout Token')
+		return res.status(400).send('Missing Token')
 	else{
 		var dir = './Tokens'
 
