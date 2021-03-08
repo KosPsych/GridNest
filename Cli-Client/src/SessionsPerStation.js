@@ -2,6 +2,7 @@ const axios = require('axios');
 const chalk = require('chalk');
 const checkParams = require('./utils/checkParams');
 const createURL = require('./utils/createURL');
+const fs = require('fs')
 
 module.exports = function(object){
 
@@ -20,28 +21,32 @@ module.exports = function(object){
 
     else{
 
-        //Create url
-        let baseUrl = createURL('SessionsPerStation/',object.station,object.datefrom,object.dateto,object.format,object.apikey);
+        if (object.apikey!= fs.readFileSync('./Tokens/softeng20bAPI', {encoding:'utf8', flag:'r'}) )
+            console.log(chalk.red('Error 401 : Not Authorized'));
+        else {
+            //Create url
+            let baseUrl = createURL('SessionsPerStation/',object.station,object.datefrom,object.dateto,object.format,object.apikey);
 
-        // add apikey to headers 
-        const config = {
-            headers: {
-                'x-observatory-auth' : object.apikey
+            // add apikey to headers 
+            const config = {
+                headers: {
+                    'x-observatory-auth' : object.apikey
+                }
             }
-        }
 
-                    
-        //Send get request
+                        
+            //Send get request
 
-        axios.get(baseUrl,config )
-        .then(res => {
-            console.log(res.data);
+            axios.get(baseUrl,config )
+            .then(res => {
+                console.log(res.data);
+                })
+            .catch(err => {
+                console.log(chalk.red(err.message));
+                console.log(chalk.red(err.response.data));
             })
-        .catch(err => {
-            console.log(chalk.red(err.message));
-            console.log(chalk.red(err.response.data));
-        })
-        return;
+            
+        }
     }
 
 };

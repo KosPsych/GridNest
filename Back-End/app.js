@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-
 // create express app
 const app = express()
 
@@ -16,7 +15,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true }))
 app.use(cors({origin: 'http://localhost:3000'}));
 
 require('./routes/LoginRoute')(app)
-require('./routes/LogoutRoute')(app)
 require('./routes/AdminAddAlterUserRoute')(app)
 require('./routes/AdminReadUserRoute')(app)
 require('./routes/ResetRoute')(app)

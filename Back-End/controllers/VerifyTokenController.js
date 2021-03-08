@@ -10,17 +10,17 @@ function verifyToken(req, res, next) {
 
     if (!token)  res.status(400).send('Missing Token')
     else{
-        var dir = './Tokens'
+        // var dir = './Tokens'
 
-        if (!fs.existsSync(dir)) return res.status(401).send('Not Authorized');
+        // if (!fs.existsSync(dir)) return res.status(401).send('Not Authorized');
 
-        var file = 'softeng20bAPI'
+        // var file = 'softeng20bAPI'
 
-        var path = dir + '/' +  file
+        // var path = dir + '/' +  file
 
-        const data = fs.readFileSync(path, {encoding:'utf8', flag:'r'})
+        // const data = fs.readFileSync(path, {encoding:'utf8', flag:'r'})
 
-        if (data != token) return res.status(401).send('Not Authorized');
+        //if (data != token) return res.status(401).send('Not Authorized');
 
         jwt.verify(token, secretToken, (err, user) => {
             if (err) res.status(401).send('Not Authorized')

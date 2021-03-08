@@ -1,7 +1,7 @@
 const db = require('../db')
 
 function HealthCheck(req, res) {
-
+	
 	if(db.state === 'disconnected'){
 		res.json({ "status": "failed" })
 	}
