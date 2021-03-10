@@ -7,7 +7,7 @@ function AddSessions(req,res){
     else {
       let stream = fs.createReadStream("./upload_folder/upload_file.csv");
       let csvData = [];
-
+     
       let csvStream = fastcsv
           .parse()
           .on('error', function(error) {
@@ -21,10 +21,14 @@ function AddSessions(req,res){
               // remove the first line: header
               csvData.shift();
 
+             // console.log(csvData)
               let insert_query = "INSERT IGNORE  INTO Sessions(SessionID, StationID,PointID, Username, VehicleID, connectionTime,"+
-              " doneCharginTime, Timezone ,KwhDelivered ,Protocol,Payment )  VALUES ?";
+              " doneCharginTime, Timezone ,KwhDelivered ,Protocol,Payment )  VALUES ? ";
               db.query(insert_query, [csvData], (err, db_res) => {
-                  if (err) res.status(400).send("Incorrect Data format for  Sessions or File is too big(larger than 1GB)")
+                  if (err) {
+                      res.status(400).send("Incorrect Data format for  Sessions or File is too big(larger than 1GB)")
+                      //console.log(err)
+                    }
                   else{
                       let count_query = "SELECT Count(*) as count FROM Sessions";
                       db.query(count_query, (err1, result) => {

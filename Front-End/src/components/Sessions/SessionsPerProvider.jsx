@@ -48,9 +48,9 @@ import {Pie} from 'react-chartjs-2';
           var counter2=0
           var counter3=0
           var counter4=0
-          for (var i=0; i <Sessions.ProviderChargingSessionsList.length; i++){
-            var hour=parseInt(Sessions.ProviderChargingSessionsList[i].StartedOn.split(" ")[1].substring(0, 2))
-            var energy = parseInt(Sessions.ProviderChargingSessionsList[i].EnergyDelivered)
+          for (var i=0; i <Sessions.length; i++){
+            var hour=parseInt(Sessions[i].StartedOn.split(" ")[1].substring(0, 2))
+            var energy = parseInt(Sessions[i].EnergyDelivered)
             if (hour>=18)
              counter1=counter1+energy
             else if(hour>=12)
@@ -63,7 +63,8 @@ import {Pie} from 'react-chartjs-2';
           this.state.datasets[0].data=[counter1,counter2,counter3,counter4]
            } 
         catch (error) {
-          this.setState({errors :" Error Status:" +error.response.status + "wrong input parameters"})
+          console.log(error)
+          this.setState({errors :error.response.status  + " " + error.response.data})
                       }
                          }
 
@@ -73,16 +74,17 @@ import {Pie} from 'react-chartjs-2';
           if(this.state.second_render){   
                 return (      
                    <React.Fragment>
-                        <ul className="SessionsperProviderResultList">
-                         <li>ProviderID : {this.props.match.params.ProviderID}</li>
-                         <li>ProviderName : {this.state.Sessions.ProviderName}</li>    
-                        </ul>
+                    <ul className="SessionsperProviderResultList">
+                         <li>Sessions Per Provider</li>  
+                        </ul>    
 
                  <div className="table-wrapper">
                   <div className="table-scroll">
-                   <Table style={{width:1300,marginLeft:140}}>
+                   <Table style={{width:1500,marginLeft:50}}>
                        <thead>
                          <tr> 
+                           <th>ProviderID</th>
+                            <th>ProviderName</th>
                             <th>StationID</th>
                             <th>SessionID</th>
                             <th>VehicleID</th>
@@ -94,15 +96,17 @@ import {Pie} from 'react-chartjs-2';
                          </tr>
                         </thead>
                         <tbody>
-                              {this.state.Sessions.ProviderChargingSessionsList.map(Session => (
+                              {this.state.Sessions.map(Session => (
                                   <tr key={Session.SessionID}>
+                                       <th>{Session.ProviderID}</th>
+                                       <th>{Session.ProviderName}</th>
                                        <th>{Session.StationID}</th>
                                        <th>{Session.SessionID}</th>
                                        <th>{Session.VehicleID}</th>
                                        <th>{Session.StartedOn}</th>
                                        <th>{Session.FinishedOn}</th>
                                        <th>{Session.EnergyDelivered}</th>
-                                       <th>{Session.CostPerKWh}</th>
+                                       <th>{Session.CostPerKwh}</th>
                                        <th>{Session.TotalCost}</th>
                                   </tr>  
                                ))
@@ -124,7 +128,7 @@ import {Pie} from 'react-chartjs-2';
                               display:true,
                               position:'right'                  
                               }}}/>
-                      </div>  
+                      </div> 
                     </React.Fragment>        
                       );
   }

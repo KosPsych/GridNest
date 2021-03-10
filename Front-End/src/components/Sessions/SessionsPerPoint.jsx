@@ -53,7 +53,7 @@ class SessionsPerPoint extends Component {
           this.state.datasets[0].data=[phev,bev]
            } 
         catch (error) {
-          this.setState({errors :" Error Status:" +error.response.status + "wrong input parameters"})
+          this.setState({errors :error.response.status  + " " + error.response.data})
                       }
        }
 

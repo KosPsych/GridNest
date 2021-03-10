@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import FormData from 'form-data'
 import '../style.css'
+const fs = require('fs');
+
+const request = require('request');
+
+
 class SessionsUpdate extends Component {
     state = { 
         second_render: false,
@@ -13,18 +18,23 @@ class SessionsUpdate extends Component {
       handleSubmit = async (event) => {
          event.preventDefault();
          let formData = new FormData();
-         formData.append('file', this.state.selectedFiles);
+         formData.append('file', this.state.selectedFile);
+           
+        
          const {data : QueryResult} = await axios({
-             method: 'post',
-             url: "https://localhost:8765/evcharge/api/admin/system/sessionsupd",formData,
-             headers: {'x-observatory-auth': localStorage.getItem("token")},  
-             });
-        this.setState({second_render : true ,QueryResult})
+          method: 'post',
+          url: "https://localhost:8765/evcharge/api/admin/system/sessionsupd",data: formData,
+          headers: {'x-observatory-auth': localStorage.getItem("token")},  
+          });
+     this.setState({second_render : true ,QueryResult})
+       
+      }   
+        
+
     
-            }       
-
-
+    
             onFileChange = async event => {
+                     
                     this.setState({ selectedFile : event.target.files[0]}); 
                              }; 
 

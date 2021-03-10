@@ -10,12 +10,12 @@ import './style.css'
            
         <React.Fragment>
         <h1>Main Page</h1>
-        <div class="row">
-           <div class="column">
-           <img className="leftImage"/>
+        <div className="row">
+           <div className="column">
+           <img className="leftImage" alt=""/>
         </div>
-        <div class="column">
-          <img className="RightImage"/>
+        <div className="column">
+          <img className="RightImage" alt=""/>
          </div>
         </div>
 

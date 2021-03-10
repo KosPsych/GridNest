@@ -48,7 +48,7 @@ import {Bar} from 'react-chartjs-2';
              this.state.datasets[0].data=energy_del
              } 
         catch (error) {
-          this.setState({errors :error.message})
+          this.setState({errors :error.response.status  + " " + error.response.data})
         }
     }
 
@@ -98,7 +98,7 @@ import {Bar} from 'react-chartjs-2';
                        data={this.state}
                        width={100}
                        height={40}
-                       options={{ maintainAspectRatio: false }}
+                       //options={{ maintainAspectRatio: false }}
                        options={{
                         title:{
                         display:true,

@@ -59,7 +59,7 @@ class SessionsPerEV extends Component {
             this.state.datasets[0].data=[counter1,counter2,counter3]
         } catch (error) {
              console.log(error)
-             this.setState({errors :" Error Status:" +error.response.status + "wrong input parameters"})
+             this.setState({errors :error.response.status  + " " + error.response.data})
         }
    }
 
