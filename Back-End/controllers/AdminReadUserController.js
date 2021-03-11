@@ -9,7 +9,7 @@ function AdminReadUser(req,res){
 
     db.query(users_info, (err, result) => {
         if(err) throw 'query failed';
-        else if (result=='') return res.status(402).send('No such user');
+        else if (result=='') return res.status(400).send('No such user');
         else res.send(result);
     })
   }

@@ -8,6 +8,7 @@ function HealthCheck(req, res) {
 	else {
 		res.json({ "status": "OK" })
 	}
+
 }
 
 module.exports = HealthCheck

@@ -15,7 +15,7 @@ async function authorization(req, res, next){
       db.query(name,(err, result) => {
           if(err) throw 'query failed';
           else if (result==''){
-            res.status(402).send('Username or Password are Incorrect')
+            res.status(400).send('Username is Incorrect')
           }
           else {
               bcrypt.compare(req.body.password, result[0]['Password'], function(error, res) {
