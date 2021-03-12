@@ -1,10 +1,10 @@
 import React , { Component } from "react";
 import {Route , Redirect ,Switch} from 'react-router-dom';
-
 import NotFound from "./components/NotFound";
 import NavBar from "./components/navbar";
 import MainPage from "./components/mainpage";
 import ProtectedRoute from "./components/protectedRoute";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import SessionsProtectedRoute from "./components/SessionsProtectedRoute";
 import Login from "./components/login";
 import Logout from "./components/logout";
@@ -24,6 +24,7 @@ import jwtDecode from 'jwt-decode';
 import './components/style.css'
 class App extends Component {
     state = { 
+      admin : 0
        
      }
 
@@ -34,6 +35,8 @@ class App extends Component {
       const jwt =localStorage.getItem("token")
       const user =jwtDecode(jwt)
       this.state={user}
+      if (user){this.state.admin=user.isAdmin }
+      
         }
    catch(err){}        
       
@@ -50,7 +53,7 @@ class App extends Component {
             <main>
                 <Switch>
 
-                <ProtectedRoute path="/evcharge/api/SessionsPerPoint/:PointID/:datefrom/:dateto" user={this.state.user} component={SessionsPerPoint}/>
+                <ProtectedRoute path="/evcharge/api/SessionsPerPoint/:PointID/:datefrom/:dateto" user={this.state.user}  component={SessionsPerPoint}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerStation/:stationID/:datefrom/:dateto" user={this.state.user} component={SessionsPerStation}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerEV/:VehicleID/:datefrom/:dateto" user={this.state.user} component={SessionsPerEV}/>
                 <ProtectedRoute path="/evcharge/api/SessionsPerProvider/:ProviderID/:datefrom/:dateto" user={this.state.user} component={SessionsPerProvider}/>
@@ -84,12 +87,12 @@ class App extends Component {
                   CID="ProviderID"/>  
                 
 
-                <ProtectedRoute path="/evcharge/api/admin/system/sessionsupd" user={this.state.user} component={SessionsUpd}/>
-                <ProtectedRoute path="/evcharge/api/admin/usermod/:username/:password" user={this.state.user} component={UserMod}/>
-                <ProtectedRoute path="/evcharge/api/admin/usermod" user={this.state.user} component={Usermodform}/>
-                <ProtectedRoute path="/evcharge/api/admin/users/:username" user={this.state.user} component={GetUser}/>
-                <ProtectedRoute path="/evcharge/api/admin/users" user={this.state.user} component={GetUserForm}/>
-                <ProtectedRoute path="/evcharge/api/logout" user={this.state.user} component={Logout}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/system/sessionsupd" user={this.state.user} admin={this.state.admin} component={SessionsUpd}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/usermod/:username/:password" admin={this.state.admin} user={this.state.user}  component={UserMod}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/usermod" user={this.state.user}  admin={this.state.admin} component={Usermodform}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/users/:username" user={this.state.user}  admin={this.state.admin} component={GetUser}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/users" user={this.state.user} admin={this.state.admin}  component={GetUserForm}/>
+                <ProtectedRoute path="/evcharge/api/logout" user={this.state.user}  component={Logout}/>
 
                 <Route path="/evcharge/api/admin/healthcheck" component={Healthcheck}></Route>
                 <Route path="/evcharge/api/admin/resetsessions" component={Resetsessions}></Route>

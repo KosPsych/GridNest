@@ -19,7 +19,6 @@ class SessionsUpdate extends Component {
          event.preventDefault();
          let formData = new FormData();
          formData.append('file', this.state.selectedFile);
-           
         
          const {data : QueryResult} = await axios({
           method: 'post',

@@ -9,7 +9,8 @@ import './style.css'
           
            
         <React.Fragment>
-        <h1>Main Page</h1>
+        <h1 className="GoElectric">Go Electric</h1>
+        <h1 className="GoEverywhere">Go Everywhere</h1>
         <div className="row">
            <div className="column">
            <img className="leftImage" alt=""/>

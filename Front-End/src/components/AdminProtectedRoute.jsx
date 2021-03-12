@@ -1,12 +1,12 @@
 import React from 'react';
 import {Route , Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({path ,user, component : Component}) => {
+const AdminProtectedRoute = ({path ,user,admin, component : Component}) => {
     return (  
       <Route
          path={path}
          render = {props =>{
-           if(!user )  return <Redirect to="/evcharge/api/login"/>
+           if(!user || admin==0 )  return <Redirect to="/evcharge/api/NotFound"/>
            return <Component {...props}/>
          }} 
       />
@@ -14,4 +14,4 @@ const ProtectedRoute = ({path ,user, component : Component}) => {
         
 }
  
-export default ProtectedRoute;
+export default AdminProtectedRoute;
