@@ -3,7 +3,7 @@
 
 ### This component was created with React.JS version 17.0.1.
 
-To run this component,after cloning:
+### To run this component,after cloning:
 
 * Navigate to front-end dir
 * ``` npm i  (install all dependencies)```
