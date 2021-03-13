@@ -25,6 +25,8 @@
 
 ### When your back-end is set up too you can log into the app and unlock more functionalities as seen below :
 
+![](https://i.postimg.cc/GtHCq3Zq/Screenshot-2.png)
+
 
 
 
