@@ -14,7 +14,7 @@
   1. Run "npm i" , to install all the packages included in the package.json file. 
   2. Run "node server.js" or "npm start", to start the application.
   
- #### Testing  
+### Testing  
    1. For testing we need to create a copy database to perform our tests, while keeping the original data intact.Change the database name to Gridnest_testing in the Gridnest.sql script and run to create the test database. 
    2. On Linux or Mac run "NODE_ENV=test". On Windows run "set NODE_ENV=test".
    3. After changing the env variable, with "npm test" jest will run the "functional.test.js" file.
