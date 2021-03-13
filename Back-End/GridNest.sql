@@ -1,17 +1,21 @@
 DROP DATABASE IF EXISTS GridNest;
 CREATE DATABASE GridNest;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'softeng2020';
-flush privileges;
-USE GridNest;
-set global sql_mode='';
-SET SQL_SAFE_UPDATES = 0;
- 
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'softeng2020';
+#flush privileges;
+
+# allow mysql to handle bigger data (1GB)
+SET GLOBAL max_allowed_packet=1073741824;
+USE GridNest_testing;
+
+    
+
 CREATE TABLE EnergyProviders (
 	EPID	int NOT NULL,
 	Name	varchar(100) NOT NULL,
 	PRIMARY KEY (EPID));
 
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/EnergyProviders.csv'
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/EnergyProviders.csv'
 INTO TABLE EnergyProviders
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -26,8 +30,8 @@ CREATE TABLE Vehicles (
     usable_battery_size double,
     VehicleID	int NOT NULL,
 	PRIMARY KEY (VehicleID));
-    
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Vehicles.csv'
+  
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/Vehicles.csv'
 INTO TABLE Vehicles
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -45,7 +49,7 @@ PRIMARY KEY(StationID),
 FOREIGN KEY (EnergyProvidersID) REFERENCES EnergyProviders(EPID)
 );
 
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Stations.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/Stations.csv'
 INTO TABLE Stations
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -59,7 +63,7 @@ CREATE TABLE Points (
     FOREIGN KEY(StationID) REFERENCES Stations(StationID)
 );
 
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Points.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/Points.csv'
 INTO TABLE Points
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -76,7 +80,7 @@ CREATE TABLE Users (
     PRIMARY KEY(Username)
 );
 
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Users.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/Users.csv'
 INTO TABLE Users
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -96,13 +100,13 @@ kWhDelivered DOUBLE NOT NULL,
 Protocol varchar(10) NOT NULL,
 Payment varchar(10) NOT NULL,
 PRIMARY KEY(SessionID),
-FOREIGN KEY(StationID) REFERENCES Stations(StationID),
-FOREIGN KEY(PointID) REFERENCES Points(PointID),
-FOREIGN KEY(Username) REFERENCES Users(Username),
-FOREIGN KEY(VehicleID) REFERENCES Vehicles(VehicleID)
+FOREIGN KEY(StationID) REFERENCES Stations(StationID) ON DELETE CASCADE,
+FOREIGN KEY(PointID) REFERENCES Points(PointID) ON DELETE CASCADE ,
+FOREIGN KEY(Username) REFERENCES Users(Username) ON DELETE CASCADE,
+FOREIGN KEY(VehicleID) REFERENCES Vehicles(VehicleID) ON DELETE CASCADE
 );
 
-LOAD DATA INFILE '/Users/vangelis/Desktop/TL20-55/Database\ Files/Sessions.csv'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/database files/Sessions.csv'
 INTO TABLE Sessions
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
