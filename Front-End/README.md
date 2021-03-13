@@ -7,4 +7,4 @@ To run this component:
 
 * After cloning navigate to front-end dir
 * ``` npm i  (install all dependencies)```
-*``` npm-start```
+* ``` npm-start```
