@@ -1,3 +1,10 @@
+# Front-end fot GridNest App.
+
+
+
+### This component was created with [React.JS](https://reactjs.org/) version 17.0.1.
+
+### To run this component,after cloning:
 Create database : 
   1.  In order to create the database, access to the csv data we created is needed. You can download the csv data from the following link : 
       
