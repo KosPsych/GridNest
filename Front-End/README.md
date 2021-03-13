@@ -28,6 +28,13 @@
 ![](https://i.postimg.cc/GtHCq3Zq/Screenshot-2.png)
 
 
+### Run tests using [Jest](https://jestjs.io/docs/tutorial-react):
+
+* Navigate to front-end dir
+* ``` npm test ``` 
+
+
+
 
 
 
