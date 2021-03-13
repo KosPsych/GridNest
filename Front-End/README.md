@@ -1,8 +1,8 @@
 # Front-end fot GridNest App.
 
-http://github.com - automatic!
 
-### This component was created with React.JS version 17.0.1.
+
+### This component was created with [React.JS](https://reactjs.org/) version 17.0.1.
 
 ### To run this component,after cloning:
 
@@ -17,4 +17,4 @@ http://github.com - automatic!
 
 
 
-[GitHub](http://github.com)
+
