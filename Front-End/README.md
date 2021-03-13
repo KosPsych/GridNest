@@ -34,10 +34,17 @@
 * ``` npm test ``` 
 
 
+<br/>
+<br/>
+<br/>
 
 
+---
+**NOTE**
 
+As of now,we are using a self signed cerificate so running this app requires for you to turn off ssl certificates from your browser.
 
+---
 
 
 
