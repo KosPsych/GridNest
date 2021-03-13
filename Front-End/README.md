@@ -19,9 +19,9 @@
 
 
 
-For now this works as view-only since we are not connected to our back-end.
+###  For now this works as view-only since we are not connected to our back-end.
  
-To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README) steps.
+###  To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README) steps.
 
 
 
