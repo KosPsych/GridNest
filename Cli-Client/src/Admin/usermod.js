@@ -19,6 +19,11 @@ module.exports = function(object){
         console.log(chalk.green('--username   |-u               ex: user2112'));
         console.log(chalk.green('--passw      |-p               ex: ********'));
         console.log(chalk.green('--apikey '));
+        console.log(chalk.green('Optional Parameters:'));
+        console.log(chalk.green('--first                        ex: nikolas '));        
+        console.log(chalk.green('--last                         ex: laskaris '));        
+        console.log(chalk.green('--email                        ex: asdasd@hotmail.gr '));        
+        console.log(chalk.green('--isadmin                      ex: 0 '));        
         
     }
 
