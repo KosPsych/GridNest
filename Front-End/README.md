@@ -7,7 +7,7 @@
 ### To run this component,after cloning:
 
 * Navigate to front-end dir
-* ``` npm i  (install all dependencies)```
+* ``` npm i ``` (install all dependencies)
 * ``` npm-start```
 
 ### After these steps you should be able to see the image below :
