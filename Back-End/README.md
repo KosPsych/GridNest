@@ -1,4 +1,4 @@
-# Back-end API fot GridNest App.
+# Back-end API for GridNest App.
 
 
 
