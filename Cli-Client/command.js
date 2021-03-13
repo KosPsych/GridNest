@@ -201,7 +201,7 @@ else if(process.argv.length > 8 && (process.argv[3] == '-usr' || process.argv[3]
   console.log(chalk.red('Error! Command not supported. Too many arguments'));
   console.log(chalk.green('For more info, type --help'));
 }
-else if(process.argv.length > 10 && (process.argv[3] == '-usm' || process.argv[3] == '--usermod')){
+else if(process.argv.length > 18 && (process.argv[3] == '-usm' || process.argv[3] == '--usermod')){
   console.log(chalk.red('Error! Command not supported. Too many arguments'));
   console.log(chalk.green('For more info, type --help'));
 }
