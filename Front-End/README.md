@@ -21,7 +21,7 @@
 
   For now this works as view-only since you are not connected to your back-end.
  
-  To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README) steps.
+  To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README.md) steps.
 
 ### When your back-end is set up too you can log into the app and unlock more functionalities as seen below :
 
