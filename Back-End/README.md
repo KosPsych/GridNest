@@ -5,7 +5,7 @@
 ### This component was created with [Node.JS](https://nodejs.org/en/).
 
 ### Create database  
-  1.  In order to create the database, access to the csv data we created is needed. You can download the csv data from the following link : 
+  1.  In order to create the database, access to the csv data we created is needed. You can download the csv data from this [link](https://drive.google.com/drive/folders/1EywLZMMY3YUusgNSBDR3lRACNtNgE-oV?usp=sharing).
       
   2.  If you are working with Windows on MYSQL Workbench, save the data in the hidden folder "C:\ProgramData\MySQL\MySQL Server 8.0\Uploads" and run the Gridnest.sql script to create Gridnest database.
   3.  In the config/default file, you can enter your own database connection password.
