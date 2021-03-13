@@ -103,7 +103,7 @@ program
     .alias('ad')
     .description('Admin management operations')
     .option('-usm, --usermod ', 'Command for Creating a new user.Requires -u,-p,--apikey')
-    .option('-usr, --users  [username]','Command for searching a new user.Requires --apikey')
+    .option('-usr, --users  [username]','Command for searching a new user.Requires -u, --apikey')
     .option('-sud, --sessionupd','Command for adding Sessions from csv .Requires -s,--apikey')
     .option('-res, --resetsessions','Command for deleting sessions and resetting to default admins credentials. Requires --apikey')
     .option('-s, --source  [filename]' , 'Csv file wih correct format')
