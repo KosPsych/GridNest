@@ -11,7 +11,7 @@
 * ``` npm-start```
 
 
-###  After these steps you should be able to see the image below :
+###  After these steps you should be able to see the image below in your localhost URL:
 
 ![](https://i.postimg.cc/6q13zmTx/Screenshot-1.png)
 
@@ -21,16 +21,30 @@
 
   For now this works as view-only since you are not connected to your back-end.
  
-  To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README) steps.
+  To do this follow [these](https://github.com/ntua/TL20-55/blob/main/Back-End/README.md) steps.
 
 ### When your back-end is set up too you can log into the app and unlock more functionalities as seen below :
 
 ![](https://i.postimg.cc/GtHCq3Zq/Screenshot-2.png)
 
 
+### Run tests using [Jest](https://jestjs.io/docs/tutorial-react):
+
+* Navigate to front-end dir
+* ``` npm test ``` 
 
 
+<br/>
+<br/>
+<br/>
 
+
+---
+**NOTE**
+
+As of now,we are using a self signed cerificate so running this app requires for you to turn off ssl certificates from your browser.
+
+---
 
 
 
