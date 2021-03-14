@@ -7,7 +7,13 @@ class Resetsessions extends Component {
      }
      resetsessions = async () =>{
 
-        const {data: Response}= await axios.post("https://localhost:8765/evcharge/api/admin/resetsessions")
+
+        const {data: Response} = await axios({
+            method: 'post',
+            url: "https://localhost:8765/evcharge/api/admin/resetsessions",
+            headers: {'x-observatory-auth': localStorage.getItem("token")}
+  
+              });
         
         
         this.setState({status : Response.status})

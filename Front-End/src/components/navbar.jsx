@@ -21,6 +21,7 @@ const NavBar = ({ user }) => {
                           <Link className ="dropdown-item" to="/evcharge/api/admin/usermod">User modification</Link>
                           <Link className ="dropdown-item" to="/evcharge/api/admin/users">Get User</Link>
                           <Link className ="dropdown-item" to="/evcharge/api/admin/system/sessionsupd">Sessions update</Link>
+                          <Link className ="dropdown-item" to="/evcharge/api/admin/resetsessions">Resetsessions</Link>
                       </div>
                       </li> }
                        {user && <li className ="nav-item dropdown">     
@@ -34,12 +35,10 @@ const NavBar = ({ user }) => {
                                 <Link className ="dropdown-item" to="/evcharge/api/SessionsPerProvider">SessionsPerProvider</Link>
                             </div>
                          </li> }
-                        <li className ="nav-item ">
-                            <NavLink className ="nav-link" to="/evcharge/api/admin/healthcheck">Healthcheck <span className ="sr-only">(current)</span></NavLink>
+                         <li className ="nav-item ">
+                            <NavLink className ="nav-link" to="/evcharge/api/admin/resetsessions">Healthcheck<span className ="sr-only">(current)</span></NavLink>
                         </li>
-                        <li className ="nav-item ">
-                            <NavLink className ="nav-link" to="/evcharge/api/admin/resetsessions">Resetsessions<span className ="sr-only">(current)</span></NavLink>
-                        </li>
+                      
                         {!user && <li className ="nav-item ">
                             <NavLink className ="nav-link" to="/evcharge/api/login">Login <span className ="sr-only">(current)</span></NavLink>
                         </li>}

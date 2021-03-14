@@ -5,12 +5,14 @@ function AdminAddAlterUser(req,res){
 
   if(req.user.isAdmin!='1' && req.user.isAdmin!='2') res.status(401).send('Lack of Authorization')
   else{
+      
       const username = req.params.username
       const password = req.params.password
       const first_name = req.body.first
       const last_name = req.body.last
       const email = req.body.email
       var isAdmin = req.body.isadmin
+      console.log(username ,password,first_name,last_name,email,isAdmin)
 
       if(isAdmin == 2 && username != 'admin') isAdmin = 1 //if admin made mistake, make user simply admin not default admin
       else if(username == 'admin') isAdmin  =  2 //if username = 'admin' then we insert default admin

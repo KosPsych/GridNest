@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   
- 
 
     render() { 
   
@@ -92,14 +91,14 @@ class App extends Component {
                 <AdminProtectedRoute path="/evcharge/api/admin/usermod" user={this.state.user}  admin={this.state.admin} component={Usermodform}/>
                 <AdminProtectedRoute path="/evcharge/api/admin/users/:username" user={this.state.user}  admin={this.state.admin} component={GetUser}/>
                 <AdminProtectedRoute path="/evcharge/api/admin/users" user={this.state.user} admin={this.state.admin}  component={GetUserForm}/>
-                <ProtectedRoute path="/evcharge/api/logout" user={this.state.user}  component={Logout}/>
+                <AdminProtectedRoute path="/evcharge/api/admin/resetsessions" user={this.state.user} admin={this.state.admin} component={Resetsessions} ></AdminProtectedRoute>
 
-                <Route path="/evcharge/api/admin/healthcheck" component={Healthcheck}></Route>
-                <Route path="/evcharge/api/admin/resetsessions" component={Resetsessions}></Route>
+
+                <ProtectedRoute path="/evcharge/api/logout" user={this.state.user}  component={Logout}/>
                 <Route path="/evcharge/api/login" component={Login}></Route>
                 <Route path="/evcharge/api/NotFound" component={NotFound}></Route>
                 <Route path="/evcharge/api" exact component={MainPage}></Route>
-
+                <Route path="/evcharge/api/admin/healthcheck" component={Healthcheck}></Route>
                 <Redirect from ="/" exact to ="/evcharge/api" />
                 <Redirect  to ="/evcharge/api/NotFound" /> 
 

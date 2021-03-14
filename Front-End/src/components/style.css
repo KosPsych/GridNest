@@ -34,13 +34,13 @@
 
   .container3{
     background-image: url(./images/form.jpg);
-    width: 380px;
+    width: 390px;
     opacity: 0.6;
     border-radius: 25px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 250px; 
+    height: 410px; 
   }
 
   .container4{
@@ -115,8 +115,21 @@
 }
 .AdminModInputLabel{
   font-family: 'Roboto Medium';
-  margin-left: 20px;
+  margin-left: 30px;
 }
+
+
+.AdminModInputLabel2{
+  font-family: 'Roboto Medium';
+  margin-left: 10px;
+}
+
+.AdminModInputLabel3{
+  font-family: 'Roboto Medium';
+  margin-left: 18px;
+}
+
+
 
 .ResultList{
     background-image: url(./images/form.jpg);

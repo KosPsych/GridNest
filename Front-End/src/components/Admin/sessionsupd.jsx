@@ -11,7 +11,8 @@ class SessionsUpdate extends Component {
     state = { 
         second_render: false,
         selectedFile: null,
-        QueryResult : []
+        QueryResult : [],
+        errors : ""
             }
 
            
@@ -19,27 +20,28 @@ class SessionsUpdate extends Component {
          event.preventDefault();
          let formData = new FormData();
          formData.append('file', this.state.selectedFile);
-        
+         try {
          const {data : QueryResult} = await axios({
           method: 'post',
           url: "https://localhost:8765/evcharge/api/admin/system/sessionsupd",data: formData,
           headers: {'x-observatory-auth': localStorage.getItem("token")},  
           });
-     this.setState({second_render : true ,QueryResult})
-       
-      }   
-        
 
-    
-    
-            onFileChange = async event => {
-                     
-                    this.setState({ selectedFile : event.target.files[0]}); 
-                             }; 
+          this.setState({second_render : true ,QueryResult})
+
+          } catch (error) {
+              this.setState({errors :error.response.status  +" "+error.response.data})
+                     } 
+                                     }   
+        
+      onFileChange = async event => {
+                     this.setState({ selectedFile : event.target.files[0]}); 
+                                    }; 
 
     render() { 
          if (!this.state.second_render){
          return  (
+            <React.Fragment>
             <form onSubmit={this.handleSubmit} className="sessionsupd">
                <div>
                  <h1 className="sessionsupdheader">Upload a file</h1>
@@ -51,6 +53,8 @@ class SessionsUpdate extends Component {
                </div> 
                     <input style={{width:120,backgroundColor:'white',marginTop:20,marginLeft:130}} type="submit" value="Submit" />
             </form>
+            { this.state.errors && <h1 className="error">{this.state.errors}</h1>}
+            </React.Fragment>
          ); }
          else {
              return (
