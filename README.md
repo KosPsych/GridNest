@@ -13,4 +13,4 @@
 * Front End: Περιέχει τον κώδικα για την υλοποίηση του FrontEnd,ένα φάκελο Εικόνες που χρησιμοποιείται στο UI και τον φάκελο testing.
 
 ## Architecture
-Η αρχιτεκτονική που χρησιμοποιήθηκε είναι 3-tier.Πιο συγκεκριμένα,αποτελείται από τρία components το DBMS σε MYSQL,το BackEnd σε node.js και τον client , τα οποία τρέχουν το καθένα σε διαφορετικό server.Ο client δεν μπορεί να έχει επικοινωνία με το DBMS παρά μόνο στέλντοντας requests στα endpoints που έχουν υλοποιηθεί στο BackEnd.Η εφαρμογή περιέχει δύο ανεξάρτητους clients,το Front End υλοποιημένο με React και τον Cli Client υλοποιημένο σε node.js με το commander module και axios.
+Η αρχιτεκτονική που χρησιμοποιήθηκε είναι 3-tier.Πιο συγκεκριμένα,αποτελείται από τρία components το DBMS σε MYSQL,το BackEnd σε node.js και τον client , τα οποία τρέχουν το καθένα σε διαφορετικό server.<br>Ο client δεν μπορεί να έχει επικοινωνία με το DBMS παρά μόνο στέλντοντας requests στα endpoints που έχουν υλοποιηθεί στο BackEnd.Η εφαρμογή περιέχει δύο ανεξάρτητους clients,το Front End υλοποιημένο με React και τον Cli Client υλοποιημένο σε node.js με το commander module και axios.
