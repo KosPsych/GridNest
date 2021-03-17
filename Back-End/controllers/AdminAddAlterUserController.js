@@ -11,13 +11,13 @@ function AdminAddAlterUser(req,res){
       const first_name = req.body.first
       const last_name = req.body.last
       const email = req.body.email
-      var isAdmin = req.body.isadmin
+      let isAdmin = req.body.isadmin
       console.log(username ,password,first_name,last_name,email,isAdmin)
 
       if(isAdmin == 2 && username != 'admin') isAdmin = 1 //if admin made mistake, make user simply admin not default admin
       else if(username == 'admin') isAdmin  =  2 //if username = 'admin' then we insert default admin
-      else isAdmin = 0 //for every other value, store as user
-
+      else if(isAdmin == 1) isAdmin = 1 
+      else isAdmin = 0   //for every other value, store as user
       bcrypt.hash(password, 10, (err, hashpass) => {
         if(err) {
           throw 'Hashing Failed'
