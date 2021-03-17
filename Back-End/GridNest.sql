@@ -5,7 +5,7 @@ CREATE DATABASE GridNest;
 
 # allow mysql to handle bigger data (1GB)
 SET GLOBAL max_allowed_packet=1073741824;
-USE GridNest_testing;
+USE GridNest;
 
     
 
